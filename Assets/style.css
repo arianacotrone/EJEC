@@ -153,6 +153,20 @@ nav.links a:hover { color: #fff; }
   position: relative;
   overflow: hidden;
 }
+.hero-ec-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  margin: 18px auto 0;
+  border: 2px solid rgba(255,255,255,0.55);
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 2.1rem;
+  letter-spacing: 1px;
+}
 .hero::after {
   /* motivo lineal sutil, evoca columnas de tribunal sin usar una foto */
   content: "";
