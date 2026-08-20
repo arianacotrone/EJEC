@@ -165,7 +165,7 @@ nav.links a:hover { color: #fff; }
   max-width: var(--maxw);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: 1.55fr 1fr;
   gap: 40px;
   align-items: end;
   position: relative;
@@ -181,8 +181,8 @@ nav.links a:hover { color: #fff; }
 .hero h1 {
   font-family: var(--serif);
   font-weight: 600;
-  font-size: 3.4rem;
-  line-height: 1.08;
+  font-size: clamp(3.4rem, 6vw, 5.6rem);
+  line-height: 1.06;
   letter-spacing: 0.2px;
 }
 .hero-side { text-align: right; }
@@ -197,7 +197,7 @@ nav.links a:hover { color: #fff; }
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; }
   .hero-side { text-align: left; }
-  .hero h1 { font-size: 2.3rem; }
+  .hero h1 { font-size: 2.6rem; }
 }
 
 .coverage-strip {
