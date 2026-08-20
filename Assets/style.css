@@ -158,13 +158,13 @@ nav.links a:hover { color: #fff; }
   align-items: center;
   justify-content: center;
   width: 30%;
-  height: 96px;
+  aspect-ratio: 1 / 1;
   margin: 18px auto 0;
   border: 2px solid rgba(255,255,255,0.55);
   border-radius: 50%;
   font-family: var(--serif);
   font-weight: 600;
-  font-size: 2.1rem;
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
   letter-spacing: 1px;
 }
 .hero::after {
