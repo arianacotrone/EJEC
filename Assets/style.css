@@ -179,7 +179,7 @@ nav.links a:hover { color: #fff; }
   max-width: var(--maxw);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.55fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: 40px;
   align-items: end;
   position: relative;
@@ -203,7 +203,7 @@ nav.links a:hover { color: #fff; }
 .hero-side h2 {
   font-family: var(--sans);
   font-weight: 300;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1.35;
   color: #f1f1f1;
   margin-bottom: 24px;
