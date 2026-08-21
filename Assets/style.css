@@ -186,17 +186,27 @@ nav.links a:hover { color: #fff; }
   position: relative;
   overflow: hidden;
 }
+.hero::after {
+  /* motivo lineal sutil, evoca columnas de tribunal sin usar una foto */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 2px, transparent 2px 96px);
+  pointer-events: none;
+}
 
 /* Variante clara del hero con foto de fondo (usada en index.html) */
 .hero.hero-light {
   background:
     linear-gradient(100deg, rgba(248,249,250,0.96) 0%, rgba(248,249,250,0.90) 32%, rgba(248,249,250,0.62) 60%, rgba(248,249,250,0.40) 100%),
-    url('hero-bg.jpg');
+    url('hero-bg.jpg?v=20260821f');
   background-size: cover;
   background-position: center;
   color: var(--text);
 }
-
+.hero.hero-light::after {
+  background-image: repeating-linear-gradient(90deg, rgba(17,39,64,0.04) 0 2px, transparent 2px 96px);
+}
 .hero.hero-light .kicker { color: rgba(17,39,64,0.65); }
 .hero.hero-light h1 { color: var(--ink); }
 .hero.hero-light .hero-lead { color: rgba(30,35,42,0.78); }
