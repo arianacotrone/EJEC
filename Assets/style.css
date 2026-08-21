@@ -155,6 +155,14 @@ nav.links a:hover { color: #fff; }
   position: relative;
   overflow: hidden;
 }
+.hero::after {
+  /* motivo lineal sutil, evoca columnas de tribunal sin usar una foto */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 2px, transparent 2px 96px);
+  pointer-events: none;
+}
 
 /* Variante clara del hero con foto de fondo (usada en index.html) */
 .hero.hero-light {
@@ -165,13 +173,31 @@ nav.links a:hover { color: #fff; }
   background-position: center;
   color: var(--text);
 }
-
+.hero.hero-light::after {
+  background-image: repeating-linear-gradient(90deg, rgba(17,39,64,0.04) 0 2px, transparent 2px 96px);
+}
 .hero.hero-light .kicker { color: rgba(17,39,64,0.65); }
 .hero.hero-light h1 { color: var(--ink); }
 .hero.hero-light .hero-lead { color: rgba(30,35,42,0.78); }
 .hero.hero-light .hero-stat { border-top: 1px solid rgba(17,39,64,0.16); }
 .hero.hero-light .hero-stat-num { color: var(--ink); }
 .hero.hero-light .hero-stat-label { color: rgba(30,35,42,0.6); }
+
+/* Variante clara del hero de infracciones/ — misma fórmula, otra foto */
+.hero.hero-light.hero-multas {
+  background:
+    linear-gradient(100deg, rgba(248,249,250,0.96) 0%, rgba(248,249,250,0.90) 32%, rgba(248,249,250,0.60) 62%, rgba(248,249,250,0.38) 100%),
+    url('hero-multas-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.hero.hero-multas h1 {
+  font-size: clamp(2.9rem, 5.4vw, 4.8rem);
+  max-width: 13ch;
+}
+.hero.hero-multas .hero-side h2 {
+  color: rgba(30,35,42,0.82);
+}
 .hero-inner {
   max-width: var(--maxw);
   margin: 0 auto;
@@ -608,11 +634,59 @@ footer a:hover { text-decoration: underline; }
 .fab-whatsapp {
   position: fixed; bottom: 22px; right: 22px;
   background: var(--whatsapp); color: #fff;
-  width: 58px; height: 58px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
+  width: 58px; height: 58px; border-radius: 999px;
+  display: flex; align-items: center;
+  padding-left: 15px;
   text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,0.25); z-index: 50;
+  overflow: hidden;
+  opacity: 0; transform: translateY(16px) scale(0.85);
+  pointer-events: none;
+  transition: width 0.38s cubic-bezier(.4,0,.2,1), transform 0.28s cubic-bezier(.4,0,.2,1), box-shadow 0.28s ease;
 }
-.fab-whatsapp svg { width: 28px; height: 28px; }
+.fab-whatsapp.fab-visible {
+  opacity: 1; transform: translateY(0) scale(1);
+  pointer-events: auto;
+  transition: width 0.38s cubic-bezier(.4,0,.2,1), transform 0.55s cubic-bezier(.34,1.56,.64,1), box-shadow 0.28s ease, opacity 0.5s ease;
+}
+.fab-whatsapp:hover, .fab-whatsapp:focus-visible {
+  width: 196px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.32);
+  transform: translateY(-3px) scale(1.04);
+}
+.fab-whatsapp:active { transform: translateY(-1px) scale(0.98); }
+.fab-whatsapp-icon { width: 28px; height: 28px; flex-shrink: 0; }
+.fab-whatsapp-text {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: var(--sans);
+  font-size: 14.5px; font-weight: 600;
+  max-width: 0; opacity: 0;
+  overflow: hidden;
+  transition: max-width 0.38s cubic-bezier(.4,0,.2,1) 0.05s, opacity 0.22s ease 0.12s, margin-left 0.38s cubic-bezier(.4,0,.2,1) 0.05s;
+  margin-left: 0;
+}
+.fab-whatsapp:hover .fab-whatsapp-text,
+.fab-whatsapp:focus-visible .fab-whatsapp-text {
+  max-width: 140px; opacity: 1; margin-left: 10px;
+}
+.fab-whatsapp-ring {
+  position: absolute; inset: 0; border-radius: 999px;
+  background: var(--whatsapp);
+  opacity: 0; pointer-events: none;
+}
+.fab-whatsapp.fab-visible .fab-whatsapp-ring {
+  animation: fab-pulse 2.4s cubic-bezier(0,0,.3,1) 1.2s 3;
+}
+@keyframes fab-pulse {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.85); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fab-whatsapp, .fab-whatsapp-text, .fab-whatsapp-ring {
+    transition: opacity 0.3s ease !important; animation: none !important;
+  }
+  .fab-whatsapp:hover { width: 58px; }
+}
 
 /* ---------- Scroll reveal ---------- */
 .reveal {
@@ -630,5 +704,6 @@ footer a:hover { text-decoration: underline; }
   section { padding: 64px 20px; }
   .hero { padding: 130px 20px 80px; }
   .hero h1 { font-size: 2.1rem; }
+  .hero.hero-multas h1 { font-size: 2.3rem; max-width: none; }
   .dark-panel { padding: 40px 22px; }
 }

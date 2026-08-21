@@ -32,6 +32,25 @@
   els.forEach(function (el) { io.observe(el); });
 })();
 
+// Botón flotante de WhatsApp: aparece con una entrada suave recién cuando
+// se scrollea más allá del primer tramo de la página (evita duplicar el
+// CTA del Hero apenas se carga) y queda con foco visible para teclado.
+(function () {
+  var fab = document.querySelector('.fab-whatsapp');
+  if (!fab) return;
+  var shown = false;
+  function onScroll() {
+    var trigger = Math.min(window.innerHeight * 0.6, 480);
+    if (!shown && window.scrollY > trigger) {
+      shown = true;
+      fab.classList.add('fab-visible');
+      window.removeEventListener('scroll', onScroll);
+    }
+  }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
 // [PLACEHOLDER] Dispara conversión en Google Ads / GA4 y Meta Pixel cuando
 // alguien hace click en un botón de WhatsApp o en un link de conversión. No
 // hace nada mientras las etiquetas (gtag / fbq) sigan comentadas en el
