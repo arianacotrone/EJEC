@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://espanacotrone.com.ar/sitemap.xml
