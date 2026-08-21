@@ -4,7 +4,7 @@ Sitio web del estudio de abogados penalistas **Estudio Jurídico EC** (Dr. Jose 
 
 **En vivo:**
 - https://arianacotrone.github.io/EJEC/
-- https://estudioec.netlify.app/
+- https://espanacotrone.com.ar/
 
 ## Estructura
 
