@@ -6,15 +6,15 @@
    ========================================================================== */
 
 :root {
-  --ink: #111E38;          /* Deep Night Blue — marca principal (headers, botones, secciones oscuras) */
-  --ink-soft: #1a2c52;     /* variante más clara del azul noche (cards dentro de paneles oscuros) */
+  --ink: #122740;          /* Navy del logo — marca principal (headers, botones, secciones oscuras) */
+  --ink-soft: #1c3654;     /* variante más clara del azul noche (cards dentro de paneles oscuros) */
   --text: #1E232A;         /* Dark Charcoal — texto de cuerpo */
   --paper: #ffffff;
   --paper-soft: #f8f9fa;   /* Soft Slate Gray para alternar secciones */
   --muted: rgba(30,35,42,0.62);   /* texto de cuerpo sobre blanco (derivado del charcoal) */
   --muted-invert: #b7bdca;        /* texto secundario sobre azul noche */
   --line: #e6e5e2;
-  --accent: #FF5A36;       /* Vibrant Orange — CTAs, badges, links de acento */
+  --accent: #A5783C;       /* Dorado del logo — CTAs, badges, links de acento */
   --whatsapp: #25D366;
   --radius-pill: 999px;
   --radius-card: 18px;
@@ -82,21 +82,23 @@ header.is-scrolled {
   text-decoration: none;
   color: #fff;
 }
-.brand-mark .monogram {
-  width: 40px; height: 40px;
-  border: 1px solid rgba(255,255,255,0.55);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif);
-  font-size: 15px;
-  letter-spacing: 0.5px;
+.brand-mark .brand-logo {
+  width: 60px; height: 60px;
+  object-fit: contain;
   flex-shrink: 0;
 }
 .brand-mark .brand-name {
   font-family: var(--serif);
-  font-size: 16.5px;
+  font-size: 15.5px;
+  line-height: 1.2;
   letter-spacing: 0.3px;
+  max-width: 220px;
 }
+header.on-light:not(.is-scrolled) .brand-mark,
+header.on-light:not(.is-scrolled) .brand-mark .brand-name { color: var(--ink); }
+header.on-light:not(.is-scrolled) nav.links a { color: rgba(17,39,64,0.72); }
+header.on-light:not(.is-scrolled) nav.links a:hover { color: var(--ink); }
+header.on-light:not(.is-scrolled) .btn-nav-contact { background: var(--ink); color: #fff; }
 nav.links {
   display: flex;
   gap: 28px;
@@ -145,27 +147,13 @@ nav.links a:hover { color: #fff; }
 /* ---------- Hero ---------- */
 .hero {
   background:
-    radial-gradient(circle at 18% 12%, rgba(255,90,54,0.16), transparent 42%),
+    radial-gradient(circle at 18% 12%, rgba(165,120,60,0.18), transparent 42%),
     linear-gradient(150deg, #16233f 0%, #0b1220 60%, #05070d 100%);
   color: #fff;
   padding: 150px 32px 110px;
   margin-top: -86px; /* compensa el header sticky para quedar full-bleed */
   position: relative;
   overflow: hidden;
-}
-.hero-ec-circle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24%;
-  aspect-ratio: 1 / 1;
-  margin: 16px auto 0;
-  border: 2px solid rgba(255,255,255,0.55);
-  border-radius: 50%;
-  font-family: var(--serif);
-  font-weight: 600;
-  font-size: clamp(1.45rem, 2.5vw, 2.2rem);
-  letter-spacing: 1px;
 }
 .hero::after {
   /* motivo lineal sutil, evoca columnas de tribunal sin usar una foto */
@@ -175,13 +163,32 @@ nav.links a:hover { color: #fff; }
   background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 2px, transparent 2px 96px);
   pointer-events: none;
 }
+
+/* Variante clara del hero con foto de fondo (usada en index.html) */
+.hero.hero-light {
+  background:
+    linear-gradient(100deg, rgba(248,249,250,0.96) 0%, rgba(248,249,250,0.90) 32%, rgba(248,249,250,0.62) 60%, rgba(248,249,250,0.40) 100%),
+    url('hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: var(--text);
+}
+.hero.hero-light::after {
+  background-image: repeating-linear-gradient(90deg, rgba(17,39,64,0.04) 0 2px, transparent 2px 96px);
+}
+.hero.hero-light .kicker { color: rgba(17,39,64,0.65); }
+.hero.hero-light h1 { color: var(--ink); }
+.hero.hero-light .hero-lead { color: rgba(30,35,42,0.78); }
+.hero.hero-light .hero-stat { border-top: 1px solid rgba(17,39,64,0.16); }
+.hero.hero-light .hero-stat-num { color: var(--ink); }
+.hero.hero-light .hero-stat-label { color: rgba(30,35,42,0.6); }
 .hero-inner {
   max-width: var(--maxw);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1.7fr 1fr;
   gap: 40px;
-  align-items: end;
+  align-items: center;
   position: relative;
 }
 .hero .kicker {
@@ -195,10 +202,19 @@ nav.links a:hover { color: #fff; }
 .hero h1 {
   font-family: var(--serif);
   font-weight: 600;
-  font-size: clamp(3.4rem, 6vw, 5.6rem);
-  line-height: 1.06;
+  font-size: clamp(2.5rem, 4.4vw, 4rem);
+  line-height: 1.12;
   letter-spacing: 0.2px;
-  width: fit-content;
+  max-width: 15ch;
+}
+.hero-lead {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1.08rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.78);
+  max-width: 46ch;
+  margin: 22px 0 32px;
 }
 .hero-side { text-align: right; }
 .hero-side h2 {
@@ -209,10 +225,39 @@ nav.links a:hover { color: #fff; }
   color: #f1f1f1;
   margin-bottom: 24px;
 }
+.hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.hero-stat {
+  text-align: right;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.16);
+}
+.hero-stat-num {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 2.1rem;
+  color: #fff;
+  line-height: 1.1;
+}
+.hero-stat-label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-top: 4px;
+}
 @media (max-width: 860px) {
   .hero-inner { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.3rem; max-width: none; }
   .hero-side { text-align: left; }
-  .hero h1 { font-size: 2.6rem; }
+  .hero-stats { flex-direction: row; gap: 24px; margin-top: 36px; }
+  .hero-stat { text-align: left; flex: 1; }
 }
 
 .coverage-strip {
@@ -349,7 +394,7 @@ h2.section-title {
 }
 .dark-card.featured {
   background: linear-gradient(135deg, #16294d, #05070d);
-  border-color: rgba(255,90,54,0.45);
+  border-color: rgba(165,120,60,0.45);
 }
 
 /* ---------- Cards claras (jurisdicciones) ---------- */
@@ -562,14 +607,9 @@ footer {
   gap: 16px;
   text-align: center;
 }
-.footer-inner .monogram {
-  width: 42px; height: 42px;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif);
-  color: #fff;
-  font-size: 15px;
+.footer-inner .footer-logo {
+  width: 52px; height: 52px;
+  object-fit: contain;
 }
 footer a { color: #fff; text-decoration: none; }
 footer a:hover { text-decoration: underline; }
