@@ -147,15 +147,21 @@ nav.links a:hover { color: #fff; }
   background: var(--accent);
 }
 .icon-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  border: 1.5px solid var(--navy);
+   flex-shrink: 0;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--navy);
-  flex-shrink: 0;
+  font-size: 17px;
+  line-height: 1;
+  background: #BC9A63;
+  color: #fff;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(165,120,60,0.22);
 }
 .icon-btn:hover { background: var(--navy); color: var(--white); }
 .icon-btn svg { width: 17px; height: 17px; }
