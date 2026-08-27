@@ -174,6 +174,36 @@ nav.links a:hover { color: #fff; }
 .btn-outline-dark { background: transparent; color: var(--ink); border-color: rgba(17,30,56,0.35); }
 .btn-outline-dark:hover { border-color: var(--ink); }
 .btn-block { width: 100%; justify-content: center; }
+.btn-call { background: var(--ink); color: #fff; }
+.btn-call:hover { background: #0b1830; }
+
+/* ---------- Hero CTA (urgencia + llamada/whatsapp) ---------- */
+.hero-cta { margin-top: 4px; }
+.hero-urgent-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(165,120,60,0.12);
+  border: 1.5px solid rgba(165,120,60,0.4);
+  color: var(--accent);
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: 0.2px;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 18px;
+}
+.hero-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+@media (max-width: 480px) {
+  .hero-urgent-badge { font-size: 12.5px; padding: 9px 16px; text-align: left; }
+  .hero-cta-buttons { gap: 10px; }
+  .hero-cta-buttons .btn { flex: 1 1 auto; justify-content: center; }
+}
 
 /* ---------- Hero ---------- */
 .hero {
@@ -475,9 +505,29 @@ h2.section-title {
   box-shadow: 0 12px 30px rgba(20,20,20,0.05);
 }
 .team-card .photo-block {
-  aspect-ratio: 4/3.4;
+  aspect-ratio: 3/4;
   border-radius: 12px;
   margin-bottom: 20px;
+}
+img.team-card-photo,
+.team-card img.photo-block {
+  width: 100%;
+  object-fit: cover;
+  object-position: center 12%;
+  display: block;
+  padding: 0;
+  background: none;
+  border: none;
+}
+/* Placeholder de foto pendiente: ícono de avatar genérico sobre gris claro */
+.team-card div.photo-block {
+  background: #ececee;
+  padding: 0;
+}
+.team-card .avatar-placeholder-icon {
+  width: 42%;
+  height: 42%;
+  color: #c7c8cc;
 }
 .team-card h3 {
   font-family: var(--serif);
