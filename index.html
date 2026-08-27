@@ -50,7 +50,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Estilos y comportamiento compartidos del sitio -->
-<link rel="stylesheet" href="Assets/style.css?v=20260821f">
+<link rel="stylesheet" href="Assets/style.css?v=20260827a">
 
 <!-- ============================================================
      [PLACEHOLDER] GOOGLE ANALYTICS 4 (GA4)
@@ -132,7 +132,13 @@
       <div class="kicker">Estudio Jurídico · Abogados Penalistas · ATENCIÓN 24 HORAS</div>
       <h1><span style="color:var(--accent);">Defensa penal</span> estratégica y de alto impacto.</h1>
       <p class="hero-lead">Más de 30 años de trayectoria defendiendo causas complejas en CABA, Buenos Aires, Fuero Federal y todo el país.</p>
-      <a class="btn btn-whatsapp" href="https://wa.me/5491161842886?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" onclick="trackConversion('whatsapp_hero')">💬 Comunicate con nosotros</a>
+      <div class="hero-cta">
+        <div class="hero-urgent-badge">🚨 Llamadas urgentes, atención inmediata las 24 horas</div>
+        <div class="hero-cta-buttons">
+          <a class="btn btn-call" href="tel:+5491161842886" onclick="trackConversion('llamada_hero')">📞 Llamar ahora</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/5491161842886?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" onclick="trackConversion('whatsapp_hero')">💬 WhatsApp</a>
+        </div>
+      </div>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
@@ -257,19 +263,29 @@
     </div>
     <div class="team-grid">
       <div class="team-card">
-        <div class="photo-block">[PLACEHOLDER] Foto</div>
+        <div class="photo-block" aria-label="Foto pendiente" title="[PLACEHOLDER] Foto">
+          <svg class="avatar-placeholder-icon" viewBox="0 0 200 200" fill="currentColor" aria-hidden="true">
+            <circle cx="100" cy="76" r="42"/>
+            <circle cx="100" cy="230" r="90"/>
+          </svg>
+        </div>
            <h3>Dr. Jose Luis España </h3>
            <div class="cred">Abogado</div>
            <p class="bio">Más de 30 años de experiencia asesorando y brindando patrocinio letrado en materia penal. </a>.</p>
       </div>
       <div class="team-card">
-        <img class="photo-block" src="fotos/Adriel.jpg" alt="Foto de Adriel">
+        <img class="photo-block" src="fotos/Adriel.jpg?v=20260827a" alt="Foto de Adriel">
            <h3>Dr. Adriel España Cotrone </h3>
            <div class="cred">Abogado</div>
            <p class="bio">Principal responsable de la sección de <a href="../infracciones/" style="color:var(--accent); font-weight:600;">Infracciones de Transito </a>.</p>
       </div>
       <div class="team-card">
-        <div class="photo-block">[PLACEHOLDER] Foto</div>
+        <div class="photo-block" aria-label="Foto pendiente" title="[PLACEHOLDER] Foto">
+          <svg class="avatar-placeholder-icon" viewBox="0 0 200 200" fill="currentColor" aria-hidden="true">
+            <circle cx="100" cy="76" r="42"/>
+            <circle cx="100" cy="230" r="90"/>
+          </svg>
+        </div>
            <h3>Dra. Patricia Beatriz Cotrone </h3>
            <div class="cred">Abogada y mediadora</div>
            <p class="bio">Más de 30 años de ejercicio del derecho, mediadora y principal responsable de la sección de <a href="../infracciones/" style="color:var(--accent); font-weight:600;">Infracciones de Transito </a>.</p>
