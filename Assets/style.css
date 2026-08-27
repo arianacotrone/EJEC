@@ -146,6 +146,19 @@ nav.links a:hover { color: #fff; }
   transform: translateY(-2px) scale(1.05);
   background: var(--accent);
 }
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1.5px solid var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  flex-shrink: 0;
+}
+.icon-btn:hover { background: var(--navy); color: var(--white); }
+.icon-btn svg { width: 17px; height: 17px; }
 
 /* ---------- Buttons ---------- */
 .btn {
