@@ -778,6 +778,184 @@ footer a:hover { text-decoration: underline; }
   .fab-whatsapp:hover { width: 58px; }
 }
 
+/* ---------- Urgencia (checklist tipo alerta, reutiliza dark-card) ---------- */
+.urgency-card {
+  position: relative;
+  border-left: 3px solid var(--accent);
+}
+.urgency-card .urgency-icon {
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 10px;
+}
+.urgency-card.featured {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.urgency-card.featured p { margin-bottom: 18px; }
+
+/* ---------- Casos (tipos de causa — ilustrativo, no resultados garantizados) ---------- */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  margin-top: 36px;
+}
+.case-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card-sm);
+  padding: 28px;
+  position: relative;
+}
+.case-card .case-num {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  display: block;
+}
+.case-card .case-tag {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--paper-soft);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+  margin-bottom: 14px;
+}
+.case-card h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.case-card p {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+.case-disclaimer {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: rgba(30,35,42,0.5);
+  text-align: center;
+  max-width: 620px;
+  margin: 30px auto 0;
+  font-style: italic;
+}
+
+/* ---------- Testimonios (placeholder hasta cargar reseñas reales) ---------- */
+.testimonial-note {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: rgba(30,35,42,0.55);
+  background: var(--paper-soft);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 28px auto 0;
+  max-width: 620px;
+  text-align: center;
+}
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 36px;
+}
+.testimonial-card {
+  background: var(--paper);
+  border: 1px dashed rgba(165,120,60,0.4);
+  border-radius: var(--radius-card-sm);
+  padding: 28px;
+}
+.testimonial-quote-mark {
+  font-family: var(--serif);
+  font-size: 2.6rem;
+  color: var(--accent);
+  line-height: 1;
+  display: block;
+  margin-bottom: 4px;
+}
+.testimonial-card p.testimonial-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.testimonial-attrib {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.testimonial-attrib span {
+  display: block;
+  font-weight: 300;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ---------- FAQ (acordeón nativo <details>) ---------- */
+.faq-list {
+  max-width: 780px;
+  margin: 36px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.faq-item {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card-sm);
+  overflow: hidden;
+}
+.faq-item summary {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--ink);
+  padding: 18px 24px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.92rem;
+  color: var(--muted);
+  padding: 0 24px 20px;
+  line-height: 1.6;
+}
+
 /* ---------- Scroll reveal ---------- */
 .reveal {
   opacity: 0;
