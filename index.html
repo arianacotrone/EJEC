@@ -38,6 +38,46 @@
 }
 </script>
 
+<!-- Datos estructurados FAQPage — preguntas frecuentes de derecho penal (sección #faq) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuándo conviene consultar a un abogado penalista?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ante cualquier citación, denuncia, allanamiento o detención. Cuanto antes se haga la consulta, más opciones de estrategia quedan disponibles — esperar suele achicar el margen de maniobra." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo negarme a declarar?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sí, es un derecho constitucional. No declarar no implica reconocer nada ni perjudica por sí solo el desarrollo del proceso." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre un defensor oficial y un abogado particular?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ambos ejercen la defensa técnica. Un abogado particular de tu elección permite un seguimiento directo y personalizado del caso, con contacto continuo desde el primer momento." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué hago si allanan mi casa o mi trabajo?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Presenciá el procedimiento, pedí una copia del acta labrada y comunicate con un abogado apenas sea posible, antes de responder preguntas sobre lo ocurrido." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto dura un proceso penal?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No hay un plazo único: depende de la jurisdicción, la complejidad de la causa y la etapa procesal. Cada caso se evalúa en la consulta inicial." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿La consulta inicial tiene costo?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No, la primera consulta y el análisis del caso son sin cargo." }
+    }
+  ]
+}
+</script>
+
 <!-- Favicon (logo EC oficial) -->
 <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="Assets/favicon-16.png">
@@ -50,7 +90,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Estilos y comportamiento compartidos del sitio -->
-<link rel="stylesheet" href="Assets/style.css?v=20260827a">
+<link rel="stylesheet" href="Assets/style.css?v=20260831a">
 
 <!-- ============================================================
      [PLACEHOLDER] GOOGLE ANALYTICS 4 (GA4)
@@ -237,6 +277,46 @@
   </div>
 </section>
 
+<section id="urgencia">
+  <div class="section-inner reveal">
+    <div class="dark-panel">
+      <div class="center">
+        <span class="eyebrow-badge on-dark">Primeros pasos</span>
+        <h2 class="section-title">¿Qué hacer ante una urgencia penal?</h2>
+        <p class="section-sub" style="color:rgba(255,255,255,0.65);">Los primeros minutos son decisivos. Esto es lo que conviene hacer — y lo que conviene evitar — mientras nos contactás.</p>
+      </div>
+      <div class="dark-grid" style="margin-top:36px;">
+        <div class="dark-card urgency-card">
+          <span class="urgency-icon">🚫</span>
+          <h3>No declares sin abogado</h3>
+          <p>Es un derecho constitucional, no un obstáculo para la causa. Nada te obliga a responder antes de tener asesoramiento.</p>
+        </div>
+        <div class="dark-card urgency-card">
+          <span class="urgency-icon">🔒</span>
+          <h3>No entregues claves ni accesos</h3>
+          <p>Ni de tu celular ni de tu computadora, sin asesoramiento previo — aunque te lo pidan con insistencia.</p>
+        </div>
+        <div class="dark-card urgency-card">
+          <span class="urgency-icon">📍</span>
+          <h3>Anotá dónde está la persona detenida</h3>
+          <p>Comisaría, seccional o fiscalía interviniente — ese dato agiliza todo lo que sigue.</p>
+        </div>
+        <div class="dark-card urgency-card">
+          <span class="urgency-icon">📄</span>
+          <h3>Guardá toda notificación o acta</h3>
+          <p>Citaciones, actas de allanamiento, constancias — no descartes nada, aunque parezca menor.</p>
+        </div>
+        <div class="dark-card urgency-card featured">
+          <span class="urgency-icon">📞</span>
+          <h3>Comunicate antes de firmar o responder</h3>
+          <p>Atendemos urgencias las 24 horas — el primer contacto puede hacerse desde acá mismo.</p>
+          <a class="btn btn-whatsapp" href="https://wa.me/5491161842886?text=Hola%2C%20tengo%20una%20urgencia%20y%20necesito%20hablar%20con%20un%20abogado" target="_blank" rel="noopener" onclick="trackConversion('whatsapp_urgencia')">💬 Escribir ahora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="jurisdicciones" style="background:var(--paper-soft);">
   <div class="section-inner reveal">
     <div class="center">
@@ -270,7 +350,7 @@
         <img class="photo-block" src="fotos/Jose.jpg?v=20260827a" alt="Foto de José Luis">
            <h3>Dr. Jose Luis España </h3>
            <div class="cred">Abogado</div>
-           <p class="bio">Más de 30 años de experiencia asesorando y brindando patrocinio letrado en materia penal. </a>.</p>
+           <p class="bio">Más de 30 años de experiencia asesorando y brindando patrocinio letrado en materia penal.</p>
       </div>
       <div class="team-card">
         <img class="photo-block" src="fotos/Adriel.jpg?v=20260827a" alt="Foto de Adriel">
@@ -285,6 +365,55 @@
            <p class="bio">Más de 30 años de ejercicio del derecho, mediadora y principal responsable de la sección de <a href="../infracciones/" style="color:var(--accent); font-weight:600;">Infracciones de Transito </a>.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="section-inner reveal">
+    <div class="center">
+      <div class="eyebrow">Nuestro trabajo</div>
+      <h2 class="section-title">Tipos de causas en las que intervenimos</h2>
+      <p class="section-sub">Ejemplos representativos de nuestra práctica — sin datos identificables, a modo ilustrativo.</p>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <span class="case-num">01</span>
+        <span class="case-tag">Derecho Penal</span>
+        <h3>Defensa en causas por delitos contra la propiedad</h3>
+        <p>Análisis de la prueba y gestión de salidas alternativas al juicio (probation, suspensión de juicio a prueba) cuando la causa lo permitía.</p>
+      </div>
+      <div class="case-card">
+        <span class="case-num">02</span>
+        <span class="case-tag">Derecho Penal</span>
+        <h3>Presentaciones para obtener la libertad durante el proceso</h3>
+        <p>Excarcelaciones y eximiciones de prisión gestionadas apenas se dieron las condiciones legales para solicitarlas.</p>
+      </div>
+      <div class="case-card">
+        <span class="case-num">03</span>
+        <span class="case-tag">Infracciones</span>
+        <h3>Impugnación de actas de infracción</h3>
+        <p>Descargos que evitaron el pago de la multa cuando el acta tenía errores de forma o de procedimiento.</p>
+      </div>
+      <div class="case-card">
+        <span class="case-num">04</span>
+        <span class="case-tag">Asesoramiento integral</span>
+        <h3>Desalojos y acciones posesorias</h3>
+        <p>Acompañamiento completo en procesos de recupero de inmuebles, de inicio a resolución.</p>
+      </div>
+      <div class="case-card">
+        <span class="case-num">05</span>
+        <span class="case-tag">Asesoramiento integral</span>
+        <h3>Amparos de salud</h3>
+        <p>Gestión de reclamos ante obras sociales y prepagas frente a coberturas denegadas o demoradas.</p>
+      </div>
+      <div class="case-card">
+        <span class="case-num">06</span>
+        <span class="case-tag">Asesoramiento integral</span>
+        <h3>Defensa del consumidor</h3>
+        <p>Reclamos por incumplimientos ante proveedores de bienes y servicios.</p>
+      </div>
+    </div>
+    <p class="case-disclaimer">El resultado de un proceso judicial depende de las circunstancias particulares de cada caso. Este resumen es ilustrativo del tipo de trabajo que hacemos y no constituye garantía de resultado.</p>
   </div>
 </section>
 
@@ -316,6 +445,69 @@
         <h3>Seguimiento</h3>
         <p>Controlamos los plazos y te mantenemos al tanto hasta la resolución.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonios">
+  <div class="section-inner reveal">
+    <div class="center">
+      <div class="eyebrow">Lo que dicen nuestros clientes</div>
+      <h2 class="section-title">Testimonios</h2>
+    </div>
+    <div class="testimonial-note">📎 [PLACEHOLDER] Testimonios de ejemplo — reemplazar por reseñas reales de clientes (Google, WhatsApp, etc.) antes de sacar el borrador de trabajo.</div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <span class="testimonial-quote-mark">"</span>
+        <p class="testimonial-text">[Ejemplo] Nos explicaron cada paso con claridad y siempre supimos en qué etapa estaba la causa.</p>
+        <div class="testimonial-attrib">Cliente — Derecho Penal<span>Reseña de ejemplo, a reemplazar</span></div>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-quote-mark">"</span>
+        <p class="testimonial-text">[Ejemplo] Estuvieron disponibles apenas los llamamos, fuera de horario. Se nota la trayectoria.</p>
+        <div class="testimonial-attrib">Cliente — Urgencia penal<span>Reseña de ejemplo, a reemplazar</span></div>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-quote-mark">"</span>
+        <p class="testimonial-text">[Ejemplo] Me ahorraron pagar una multa que no correspondía, con un descargo bien fundamentado.</p>
+        <div class="testimonial-attrib">Cliente — Infracciones de tránsito<span>Reseña de ejemplo, a reemplazar</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--paper-soft);">
+  <div class="section-inner narrow reveal">
+    <div class="center">
+      <div class="eyebrow">Dudas frecuentes</div>
+      <h2 class="section-title">Lo que necesitás saber</h2>
+      <p class="section-sub">Respuestas claras a las preguntas más habituales sobre derecho penal. ¿Tenés otra? <a href="https://wa.me/5491161842886?text=Hola%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" style="color:var(--accent); font-weight:600;">Escribinos →</a></p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>¿Cuándo conviene consultar a un abogado penalista?</summary>
+        <p>Ante cualquier citación, denuncia, allanamiento o detención. Cuanto antes se haga la consulta, más opciones de estrategia quedan disponibles — esperar suele achicar el margen de maniobra.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Puedo negarme a declarar?</summary>
+        <p>Sí, es un derecho constitucional. No declarar no implica reconocer nada ni perjudica por sí solo el desarrollo del proceso.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué diferencia hay entre un defensor oficial y un abogado particular?</summary>
+        <p>Ambos ejercen la defensa técnica. Un abogado particular de tu elección permite un seguimiento directo y personalizado del caso, con contacto continuo desde el primer momento.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué hago si allanan mi casa o mi trabajo?</summary>
+        <p>Presenciá el procedimiento, pedí una copia del acta labrada y comunicate con un abogado apenas sea posible, antes de responder preguntas sobre lo ocurrido.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cuánto dura un proceso penal?</summary>
+        <p>No hay un plazo único: depende de la jurisdicción, la complejidad de la causa y la etapa procesal. Cada caso se evalúa en la consulta inicial.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿La consulta inicial tiene costo?</summary>
+        <p>No, la primera consulta y el análisis del caso son sin cargo.</p>
+      </details>
     </div>
   </div>
 </section>
