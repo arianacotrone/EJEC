@@ -16,9 +16,10 @@
   --line: #e6e5e2;
   --accent: #A5783C;       /* Dorado del logo — CTAs, badges, links de acento */
   --whatsapp: #25D366;
-  --radius-pill: 999px;
-  --radius-card: 18px;
-  --radius-card-sm: 14px;
+  --radius-pill: 999px;    /* reservado para tags/badges pequeños (categorías, chips) */
+  --radius-btn: 4px;       /* botones — rectángulo casi recto, más "estudio jurídico" que "app" */
+  --radius-card: 14px;
+  --radius-card-sm: 10px;
   --maxw: 1160px;
   --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --sans: 'Inter', Arial, 'Segoe UI', Helvetica, sans-serif;
@@ -172,7 +173,7 @@ nav.links a:hover { color: #fff; }
   font-weight: 500;
   font-size: 14.5px;
   padding: 14px 26px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-btn);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -183,6 +184,21 @@ nav.links a:hover { color: #fff; }
   white-space: nowrap;
 }
 .btn:hover { transform: translateY(-2px); }
+
+/* Link de texto simple para un tercer CTA sin competir visualmente con los dos botones principales */
+.hero-text-link {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  transition: color .2s ease, border-color .2s ease;
+}
+.hero-text-link:hover { color: #fff; border-color: #fff; }
 .btn-dark { background: var(--ink); color: #fff; }
 .btn-dark:hover { background: #0b1830; }
 .btn-accent { background: var(--accent); color: #fff; }
@@ -454,6 +470,17 @@ h2.section-title {
 @media (max-width: 860px) {
   .two-col { grid-template-columns: 1fr; }
   .mission-photo { aspect-ratio: 4/3; }
+}
+
+/* Tratamiento fotográfico unificado: las fotos disponibles vienen de fuentes
+   distintas (estudio propio, eventos con backdrop de sponsors, exteriores) y
+   sin este ajuste se nota. Un desaturado leve + más contraste las acerca a
+   una misma "temperatura" editorial, más allá del fondo de cada una. */
+.mission-photo,
+.team-card img.photo-block,
+.hero-portrait-frame img,
+.lead-spotlight-photo img {
+  filter: grayscale(25%) contrast(1.08) saturate(0.92);
 }
 
 /* ---------- Paneles oscuros con tarjetas (áreas de práctica, otros servicios) ---------- */
@@ -777,15 +804,11 @@ footer a:hover { text-decoration: underline; }
   background: var(--whatsapp);
   opacity: 0; pointer-events: none;
 }
-.fab-whatsapp.fab-visible .fab-whatsapp-ring {
-  animation: fab-pulse 2.4s cubic-bezier(0,0,.3,1) 1.2s 3;
-}
-@keyframes fab-pulse {
-  0% { opacity: 0.5; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.85); }
-}
+/* Nota: se retiró el pulso animado del botón flotante — leía como un patrón
+   de venta retail, poco acorde a un estudio penal serio. El botón se muestra
+   igual (fade-in al hacer scroll) y sigue expandiendo el texto al hover. */
 @media (prefers-reduced-motion: reduce) {
-  .fab-whatsapp, .fab-whatsapp-text, .fab-whatsapp-ring {
+  .fab-whatsapp, .fab-whatsapp-text {
     transition: opacity 0.3s ease !important; animation: none !important;
   }
   .fab-whatsapp:hover { width: 58px; }
@@ -797,9 +820,13 @@ footer a:hover { text-decoration: underline; }
   border-left: 3px solid var(--accent);
 }
 .urgency-card .urgency-icon {
-  font-size: 1.3rem;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--accent);
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
 }
 .urgency-card.featured {
   display: flex;
@@ -1262,7 +1289,7 @@ footer a:hover { text-decoration: underline; }
   font-size: 0.85rem;
   font-weight: 600;
   padding: 9px 18px;
-  border-radius: var(--radius-pill);
+  border-radius: 6px;
   border: 1.5px solid var(--line);
   background: var(--paper);
   color: var(--muted);
@@ -1326,7 +1353,7 @@ footer a:hover { text-decoration: underline; }
   font-size: 0.86rem;
   font-weight: 500;
   padding: 10px 16px;
-  border-radius: var(--radius-pill);
+  border-radius: 6px;
   border: 1.5px solid var(--line);
   color: var(--text);
   cursor: pointer;
@@ -1418,20 +1445,15 @@ nav.links a.is-active { color: var(--accent) !important; font-weight: 500; }
   margin-bottom: 18px;
   max-width: 68ch;
 }
-.lead-media-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0 0 22px;
-}
-.lead-media-tags span {
+.lead-media-line {
   font-family: var(--sans);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  color: var(--ink);
-  background: var(--paper-soft);
-  border-radius: var(--radius-pill);
-  padding: 6px 13px;
+  letter-spacing: 0.3px;
+  color: var(--accent);
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  margin-top: 4px;
 }
 .lead-spotlight-columns {
   display: grid;
