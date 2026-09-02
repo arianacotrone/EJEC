@@ -554,6 +554,7 @@ h2.section-title {
   grid-template-columns: repeat(auto-fit, 260px);
   gap: 40px;
   margin-top: 40px;
+  justify-content: center;
 }
 .team-card {
   background: var(--paper);
