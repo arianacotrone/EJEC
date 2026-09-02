@@ -231,7 +231,7 @@ nav.links a:hover { color: #fff; }
     linear-gradient(150deg, #16233f 0%, #0b1220 60%, #05070d 100%);
   color: #fff;
   padding: 150px 32px 110px;
-  margin-top: -86px; /* compensa el header sticky para quedar full-bleed */
+  margin-top: -122px; /* <-- CAMBIADO: compensa la altura total del header + padding para eliminar la franja */
   position: relative;
   overflow: hidden;
 }
