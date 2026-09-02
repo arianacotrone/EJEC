@@ -81,7 +81,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Estilos y comportamiento compartidos del sitio -->
-<link rel="stylesheet" href="Assets/style.css?v=20260902f">
+<link rel="stylesheet" href="Assets/style.css?v=20260902g">
 
 <!-- ============================================================
      [PLACEHOLDER] GOOGLE ANALYTICS 4 (GA4)
@@ -155,30 +155,39 @@
   </div>
 </header>
 
-<!-- Hero: fondo navy editorial (sin foto de stock) + retrato del Dr. José Luis España, referente del estudio -->
-<div class="hero hero-clean hero-with-portrait">
-  <div class="hero-inner">
-    <div class="hero-main">
-      <div class="kicker">Estudio Jurídico · Abogados Penalistas · Atención 24 horas</div>
-      <h1><span style="color:var(--accent);">Defensa penal</span> estratégica en las causas más complejas.</h1>
-      <p class="hero-lead">33 años defendiendo causas de todo tipo de complejidad — homicidios, abuso sexual, violaciones, robo, usurpación y delitos federales — en CABA, Buenos Aires, Fuero Federal y todo el país.</p>
-      <div class="hero-cta">
-        <div class="hero-urgent-badge">Llamadas urgentes — atención inmediata las 24 horas</div>
-        <div class="hero-cta-buttons">
-          <a class="btn btn-whatsapp" href="https://wa.me/5491161842886?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" onclick="trackConversion('whatsapp_hero')">Evaluemos tu caso</a>
-          <a class="btn btn-outline-light" href="tel:+5491161842886" onclick="trackConversion('llamada_hero')">Llamar ahora</a>
-          <a class="hero-text-link" href="#causas">Ver tipos de causas ↓</a>
-        </div>
-      </div>
-    </div>
-    <div class="hero-portrait-wrap">
-      <div class="hero-portrait-frame">
-        <img src="fotos/Jose1.jpg?v=20260902f" alt="Dr. José Luis España, abogado penalista">
-        <span class="hero-portrait-tag">Referente del estudio</span>
-        <div class="hero-portrait-badge">
-          <span class="n">33+</span>
-          <span class="l">Años de ejercicio</span>
-        </div>
+<!-- Hero: mosaico de fotos reales de prensa de fondo, muy oscurecido — sin foto de stock ni retrato aislado -->
+<div class="hero hero-mosaic">
+  <div class="hero-mosaic-bg" aria-hidden="true">
+    <img src="fotos/prensa/media-01.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/bastidores-01.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/media-04.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/media-08.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/media-02.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/bastidores-03.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/media-05.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/media-01.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/bastidores-01.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/media-08.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/media-04.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/bastidores-03.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/media-02.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/media-05.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/bastidores-01.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/media-01.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/media-08.jpg?v=20260902g" alt="">
+    <img src="fotos/prensa/bastidores-03.jpg?v=20260902g" alt="">
+  </div>
+  <div class="hero-mosaic-overlay" aria-hidden="true"></div>
+  <div class="hero-inner hero-inner-center">
+    <div class="kicker">Estudio Jurídico · Abogados Penalistas · Atención 24 horas</div>
+    <h1><span style="color:var(--accent);">Defensa penal</span> estratégica en las causas más complejas.</h1>
+    <p class="hero-lead">33 años defendiendo causas de todo tipo de complejidad — homicidios, abuso sexual, violaciones, robo, usurpación y delitos federales — en CABA, Buenos Aires, Fuero Federal y todo el país.</p>
+    <div class="hero-cta">
+      <div class="hero-urgent-badge">Llamadas urgentes — atención inmediata las 24 horas</div>
+      <div class="hero-cta-buttons">
+        <a class="btn btn-whatsapp" href="https://wa.me/5491161842886?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" onclick="trackConversion('whatsapp_hero')">Evaluemos tu caso</a>
+        <a class="btn btn-outline-light" href="tel:+5491161842886" onclick="trackConversion('llamada_hero')">Llamar ahora</a>
+        <a class="hero-text-link" href="#causas">Ver tipos de causas ↓</a>
       </div>
     </div>
   </div>
@@ -308,14 +317,19 @@
     </div>
     <div class="lead-spotlight">
       <div class="lead-spotlight-photo">
-        <img src="fotos/Jose3.jpg?v=20260902f" alt="Foto de José Luis España">
+        <img src="fotos/Jose1.jpg?v=20260902f" alt="Foto de José Luis España">
         <span class="lead-flag">Referente del estudio</span>
       </div>
       <div class="lead-spotlight-body">
         <h3>Dr. José Luis España</h3>
         <div class="cred">Abogado penalista · 33 años de ejercicio</div>
-        <p class="bio">Abogado penalista con 33 años de ejercicio profesional ininterrumpido (desde 1992), en causas de todo tipo de complejidad en CABA, Buenos Aires, Fuero Federal y todo el país. Es convocado con frecuencia por distintos medios — América 24, Canal 22, Crónica y radios — para analizar la actualidad penal. Fue el abogado defensor del "Camus Hacker" y participó en la defensa de causas de amplia repercusión pública. Se especializa en defensas penales de delitos de distinto grado de gravedad.</p>
+        <p class="bio">Abogado penalista con 33 años de ejercicio profesional ininterrumpido (desde 1992), en causas de todo tipo de complejidad en CABA, Buenos Aires, Fuero Federal y todo el país. Es convocado con frecuencia por distintos medios — América 24, Canal 22, Crónica y radios — para analizar la actualidad penal. Fue el abogado defensor del "Hacker Camus" y participó en la defensa de causas de amplia repercusión pública, como el Caso Candela y el Caso Milagros. Se especializa en defensas penales de delitos de distinto grado de gravedad.</p>
         <div class="lead-media-line">Presencia en medios — América 24 · Canal 22 · Crónica · Radios</div>
+        <div class="case-chip-row">
+          <span class="case-chip">Caso Candela</span>
+          <span class="case-chip">Caso Milagros</span>
+          <span class="case-chip">"Hacker Camus"</span>
+        </div>
         <ul class="cred-list">
           <li>Presidente del Foro Nacional de Abogados Penalistas (desde 2011)</li>
           <li>Director del Instituto de Ciencias Penales y Política Criminal del Colegio de Abogados de Lomas de Zamora (CALZ)</li>
@@ -355,7 +369,12 @@
     <div class="center">
       <div class="eyebrow">Trayectoria y casos de repercusión</div>
       <h2 class="section-title">Una voz habitual en los medios sobre actualidad penal</h2>
-      <p class="section-sub">El Dr. José Luis España es consultado con frecuencia por distintos medios — América 24, Canal 22, Crónica y radios — para analizar la actualidad penal. Participó en la defensa de causas de amplia repercusión pública y fue defensor del "Hacker Camus".</p>
+      <p class="section-sub">El Dr. José Luis España es consultado con frecuencia por distintos medios — América 24, Canal 22, Crónica y radios — para analizar la actualidad penal. Participó en la defensa de causas de amplia repercusión pública, como el Caso Candela y el Caso Milagros, y fue defensor del "Hacker Camus".</p>
+      <div class="case-chip-row" style="justify-content:center;">
+        <span class="case-chip">Caso Candela</span>
+        <span class="case-chip">Caso Milagros</span>
+        <span class="case-chip">"Hacker Camus"</span>
+      </div>
     </div>
     <div class="media-wall">
       <a class="media-wall-item" href="prensa/"><img src="fotos/prensa/media-01.jpg" alt="Dr. José Luis España en el piso de América 24" loading="lazy"><span class="lbl">TV</span></a>
@@ -414,7 +433,7 @@
     <div class="contact-info-grid">
       <div class="contact-info-card">
         <h4>Correo</h4>
-        <a href="mailto:servicioslegales@hotmail.com">info@espanacotrone.com.ar</a>
+        <a href="mailto:info@espanacotrone.com.ar">info@espanacotrone.com.ar</a>
       </div>
       <div class="contact-info-card accent">
         <h4>Teléfono</h4>
