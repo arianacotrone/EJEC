@@ -1399,13 +1399,13 @@ nav.links a.is-active { color: var(--accent) !important; font-weight: 500; }
 .lead-spotlight {
   display: grid;
   grid-template-columns: 300px 1fr;
-  gap: 40px;
+  gap: 20px;
   align-items: start;
   background: var(--paper);
   border: 1px solid rgba(165,120,60,0.35);
   border-radius: var(--radius-card);
-  padding: 36px;
-  margin-bottom: 40px;
+  padding: 30px;
+  margin-bottom: 20px;
   box-shadow: 0 20px 50px rgba(20,20,20,0.06);
 }
 .lead-spotlight-photo { position: relative; }
