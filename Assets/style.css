@@ -54,6 +54,15 @@ a { color: inherit; }
 }
 
 /* ---------- Header ---------- */
+header nav.links a {
+  color: #ffffff !important; /* Reemplazá por el color permanente que prefieras */
+}
+
+/* Forzar que los enlaces mantengan siempre el mismo color */
+header.is-scrolled nav.links a,
+header.on-light nav.links a {
+  color: #ffffff !important;
+}
 header {
   position: sticky;
   top: 0;
