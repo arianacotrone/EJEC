@@ -28,6 +28,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
+html, body { max-width: 100%; overflow-x: hidden; }
 
 body {
   font-family: var(--sans);
@@ -36,6 +37,36 @@ body {
   background: var(--paper);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Todo el texto de párrafo (el cuerpo de texto corrido: bios, descripciones de
+   causas, tarjetas, preguntas frecuentes, testimonios, etc.) queda justificado
+   a ambos márgenes — un tratamiento prolijo y "de estudio jurídico". Los
+   títulos, botones, badges, chips y etiquetas cortas quedan afuera a propósito:
+   justificar una sola línea no tiene efecto visual, y en encabezados que llegan
+   a partirse en dos líneas se ve mal, así que ahí se mantiene su alineación
+   original. */
+.mission-text p,
+.bio,
+.dark-card p,
+.light-card p,
+.case-card p,
+.causa-panel p,
+.faq-item p,
+.testimonial-card p.testimonial-text,
+.cred-list li,
+.form-note,
+.press-hero p,
+.hero-lead {
+  text-align: justify;
+  text-justify: inter-word;
+}
+/* Textos cortos/centrados por diseño que no deben tomar la justificación aunque
+   estén cerca de un párrafo (subtítulos de sección, pasos numerados, etc.). */
+.center p,
+.section-sub,
+.step p {
+  text-align: center;
 }
 
 img { max-width: 100%; display: block; }
@@ -54,26 +85,40 @@ a { color: inherit; }
 }
 
 /* ---------- Header ---------- */
-header nav.links a {
-  color: #ffffff !important; /* Reemplazá por el color permanente que prefieras */
+/* Fondo azul degradado fijo y permanente (no transparente, no depende del scroll)
+   — mismo lenguaje visual que el hero navy del sitio, para que el header se lea
+   siempre como una pieza sólida y prolija, tanto sobre el hero como sobre el resto
+   del contenido. */
+header,
+header.is-scrolled,
+header.on-light {
+  background: linear-gradient(115deg, #1a2c4d 0%, #101d38 55%, #0a1220 100%);
 }
-
-/* Forzar que los enlaces mantengan siempre el mismo color */
+header nav.links a,
 header.is-scrolled nav.links a,
 header.on-light nav.links a {
+  color: rgba(255,255,255,0.82) !important;
+}
+header nav.links a:hover,
+header.is-scrolled nav.links a:hover,
+header.on-light nav.links a:hover {
   color: #ffffff !important;
+}
+header nav.links a.is-active,
+header.is-scrolled nav.links a.is-active,
+header.on-light nav.links a.is-active {
+  color: var(--accent) !important;
+}
+header .brand-mark,
+header.on-light .brand-mark,
+header.on-light .brand-mark .brand-name {
+  color: #fff;
 }
 header {
   position: sticky;
   top: 0;
   z-index: 40;
-  padding: 22px 32px;
-  background: transparent;
-  transition: background-color 0.35s ease, padding 0.35s ease, box-shadow .35s ease;
-}
-header.is-scrolled {
-  background: rgb(17,30,56);
-  padding: 14px 32px;
+  padding: 16px 32px;
   box-shadow: 0 6px 24px rgba(0,0,0,0.18);
 }
 .nav-wrap {
@@ -84,6 +129,30 @@ header.is-scrolled {
   justify-content: space-between;
   gap: 20px;
   flex-wrap: wrap;
+}
+/* Botón del header hacia la subpágina de Infracciones de Tránsito */
+.btn-nav-multas {
+  flex-shrink: 0;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.32);
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color .2s ease, border-color .2s ease, transform .15s ease;
+}
+.btn-nav-multas:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+@media (max-width: 640px) {
+  .btn-nav-multas { display: none; }
 }
 .brand-mark {
   display: flex;
@@ -114,11 +183,6 @@ header.is-scrolled {
   margin-left: 26px;
   margin-top: 2px;
 }
-header.on-light:not(.is-scrolled) .brand-mark,
-header.on-light:not(.is-scrolled) .brand-mark .brand-name { color: var(--ink); }
-header.on-light:not(.is-scrolled) nav.links a { color: rgba(17,39,64,0.72); }
-header.on-light:not(.is-scrolled) nav.links a:hover { color: var(--ink); }
-header.on-light:not(.is-scrolled) .btn-nav-contact { background: var(--ink); color: #fff; }
 nav.links {
   display: flex;
   gap: 28px;
@@ -505,6 +569,14 @@ h2.section-title {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
   margin-top: 36px;
+}
+/* "Primeros pasos" (#urgencia): las 4 tarjetas deben entrar siempre en una sola
+   fila en escritorio, en vez de acomodarse en 3+1 como con el auto-fit genérico
+   de arriba. */
+@media (min-width: 1024px) {
+  #urgencia .dark-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 .dark-card {
   background: var(--ink-soft);
@@ -1357,8 +1429,17 @@ footer a:hover { text-decoration: underline; }
   flex-wrap: wrap;
   gap: 10px;
 }
+/* position:relative acá es lo que evita que el <input> absoluto (oculto, de abajo)
+   se estire hasta el ancestro posicionado más cercano — sin esto, el input tomaba
+   el ancho de todo el contenedor de la sección y desbordaba la página hacia el
+   costado en escritorio. */
+.chip-option {
+  position: relative;
+  display: inline-flex;
+}
 .chip-option input {
   position: absolute;
+  inset: 0;
   opacity: 0;
   pointer-events: none;
 }
