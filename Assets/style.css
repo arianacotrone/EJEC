@@ -17,9 +17,9 @@
   --accent: #A5783C;       /* Dorado del logo — CTAs, badges, links de acento */
   --whatsapp: #25D366;
   --radius-pill: 999px;    /* reservado para tags/badges pequeños (categorías, chips) */
-  --radius-btn: 4px;       /* botones — rectángulo casi recto, más "estudio jurídico" que "app" */
-  --radius-card: 14px;
-  --radius-card-sm: 10px;
+  --radius-btn: 2px;       /* botones — recto, sobrio */
+  --radius-card: 4px;      /* bordes rectos — más "estudio jurídico serio" que "app" */
+  --radius-card-sm: 3px;
   --maxw: 1160px;
   --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --sans: 'Inter', Arial, 'Segoe UI', Helvetica, sans-serif;
@@ -472,21 +472,20 @@ h2.section-title {
   .mission-photo { aspect-ratio: 4/3; }
 }
 
-/* Tratamiento fotográfico unificado: las fotos disponibles vienen de fuentes
-   distintas (estudio propio, eventos con backdrop de sponsors, exteriores) y
-   sin este ajuste se nota. Un desaturado leve + más contraste las acerca a
-   una misma "temperatura" editorial, más allá del fondo de cada una. */
+/* Tratamiento fotográfico unificado: blanco y negro total, para sumar
+   seriedad y además unificar fotos que vienen de fuentes distintas
+   (estudio propio, eventos con backdrop de sponsors, exteriores). */
 .mission-photo,
 .team-card img.photo-block,
 .hero-portrait-frame img,
 .lead-spotlight-photo img {
-  filter: grayscale(25%) contrast(1.08) saturate(0.92);
+  filter: grayscale(100%) contrast(1.18) brightness(0.97);
 }
 
 /* ---------- Paneles oscuros con tarjetas (áreas de práctica, otros servicios) ---------- */
 .dark-panel {
   background: var(--ink);
-  border-radius: 24px;
+  border-radius: 6px;
   padding: 56px 40px;
   color: #fff;
 }
@@ -565,7 +564,7 @@ h2.section-title {
 }
 .team-card .photo-block {
   aspect-ratio: 3/4;
-  border-radius: 12px;
+  border-radius: 3px;
   margin-bottom: 20px;
 }
 img.team-card-photo,
@@ -1039,7 +1038,7 @@ footer a:hover { text-decoration: underline; }
 .hero-portrait-frame {
   position: relative;
   width: min(320px, 82vw);
-  border-radius: 22px;
+  border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 30px 70px rgba(17,39,64,0.28);
   border: 1px solid rgba(255,255,255,0.5);
@@ -1050,17 +1049,25 @@ footer a:hover { text-decoration: underline; }
   object-fit: cover;
   object-position: center 18%;
 }
+.hero-portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18,39,64,0) 55%, rgba(9,18,30,0.45) 100%);
+  pointer-events: none;
+}
 .hero-portrait-badge {
   position: absolute;
   left: -14px;
   bottom: 22px;
   background: var(--ink);
   color: #fff;
-  border-radius: 14px;
+  border-radius: 4px;
   padding: 12px 16px;
   box-shadow: 0 14px 30px rgba(17,39,64,0.35);
   max-width: 230px;
   font-family: var(--sans);
+  z-index: 2;
 }
 .hero-portrait-badge .n { display:block; font-family: var(--serif); font-weight:700; font-size: 1.6rem; color: #fff; line-height:1; }
 .hero-portrait-badge .l { display:block; font-size: 11px; letter-spacing:0.5px; color: var(--muted-invert); margin-top:4px; text-transform: uppercase;}
@@ -1568,7 +1575,7 @@ nav.links a.is-active { color: var(--accent) !important; font-weight: 500; }
   position: relative;
   display: block;
   aspect-ratio: 4/3;
-  border-radius: 10px;
+  border-radius: 3px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.12);
 }
@@ -1638,8 +1645,21 @@ nav.links a.is-active { color: var(--accent) !important; font-weight: 500; }
 }
 .press-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* La foto del hero ya viene con su propio tratamiento de color (viñeta navy) —
-   se excluye del filtro grayscale/contrast unificado para no aplanarla dos veces. */
-.hero-portrait-frame img.no-photo-filter {
-  filter: none;
+/* ---------- Chips de casos de repercusión (sección "En los medios") ---------- */
+.case-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+.case-chip {
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 2px;
+  padding: 8px 14px;
+  color: #fff;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.2px;
+  background: rgba(255,255,255,0.04);
 }
