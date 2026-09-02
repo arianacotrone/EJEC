@@ -566,6 +566,9 @@ h2.section-title {
   aspect-ratio: 3/4;
   border-radius: 3px;
   margin-bottom: 20px;
+  max-width: 200px;   /* ← agregá esta línea, con el ancho que quieras */
+  margin-left: auto;  /* ← y estas dos, para centrarla dentro de la tarjeta */
+  margin-right: auto;
 }
 img.team-card-photo,
 .team-card img.photo-block {
