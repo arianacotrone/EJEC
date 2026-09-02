@@ -96,7 +96,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Estilos y comportamiento compartidos del sitio -->
-<link rel="stylesheet" href="Assets/style.css?v=20260902a">
+<link rel="stylesheet" href="Assets/style.css?v=20260902d">
 
 <!-- ============================================================
      [PLACEHOLDER] GOOGLE ANALYTICS 4 (GA4)
@@ -151,7 +151,7 @@
 </head>
 <body>
 
-<header>
+<header class="on-light">
   <div class="nav-wrap">
     <a href="#" class="brand-mark">
       <img src="Assets/logo-ec-white-disc.png?v=20260821e" alt="Estudio Jurídico España Cotrone" class="brand-logo">
@@ -172,7 +172,7 @@
 </header>
 
 <!-- Hero: fondo navy editorial (sin foto de stock) + retrato del Dr. José Luis España, referente del estudio -->
-<div class="hero hero-with-portrait">
+<div class="hero hero-clean hero-with-portrait">
   <div class="hero-inner">
     <div class="hero-main">
       <div class="kicker">Estudio Jurídico · Abogados Penalistas · Atención 24 horas</div>
@@ -189,7 +189,7 @@
     </div>
     <div class="hero-portrait-wrap">
       <div class="hero-portrait-frame">
-        <img src="fotos/Jose1.jpg?v=20260902a" alt="Dr. José Luis España, abogado penalista">
+        <img src="fotos/Jose1-hero.jpg?v=20260902d" alt="Dr. José Luis España, abogado penalista" class="no-photo-filter">
         <span class="hero-portrait-tag">Referente del estudio</span>
         <div class="hero-portrait-badge">
           <span class="n">33+</span>
@@ -418,10 +418,11 @@
         <div class="lead-media-line">Presencia en medios — TV ("Café de Penalistas") · América 24 · Radio · Prensa gráfica</div>
         <ul class="cred-list">
           <li>Presidente del Foro Nacional de Abogados Penalistas (desde 2011)</li>
-          <li>Ex Director del Instituto de Ciencias Penales y Política Criminal del Colegio de Abogados de Lomas de Zamora (2012–2020)</li>
+          <li>Director del Instituto de Ciencias Penales y Política Criminal del Colegio de Abogados de Lomas de Zamora (CALZ)</li>
+          <li>Rector de la Fundación de Altos Estudios "Abogados sin Fronteras"</li>
           <li>Consejero Titular del Colegio de Abogados de Lomas de Zamora (CALZ)</li>
           <li>Miembro de la International Association of Crime Analysts</li>
-          <li>Consultor del PNUD (Programa de las Naciones Unidas para el Desarrollo)</li>
+          <li>Consultor del Programa de las Naciones Unidas para el Desarrollo (PNUD)</li>
           <li>Profesor adjunto — Facultad de Derecho, U.N.L.Z.</li>
         </ul>
         <a class="btn btn-outline-dark" href="prensa/">Ver notas y entrevistas →</a>
@@ -444,53 +445,35 @@
   </div>
 </section>
 
-<!-- Franja "en los medios" -->
-<div class="media-strip">
-  <div class="media-strip-track">
-    <span class="media-strip-item"><span class="dot">●</span> América 24</span>
-    <span class="media-strip-item"><span class="dot">●</span> Programa de TV "Café de Penalistas"</span>
-    <span class="media-strip-item"><span class="dot">●</span> Radio</span>
-    <span class="media-strip-item"><span class="dot">●</span> Prensa gráfica</span>
-    <span class="media-strip-item"><span class="dot">●</span> Foro Nacional de Abogados Penalistas</span>
-    <span class="media-strip-item"><span class="dot">●</span> América 24</span>
-    <span class="media-strip-item"><span class="dot">●</span> Programa de TV "Café de Penalistas"</span>
-    <span class="media-strip-item"><span class="dot">●</span> Radio</span>
-    <span class="media-strip-item"><span class="dot">●</span> Prensa gráfica</span>
-    <span class="media-strip-item"><span class="dot">●</span> Foro Nacional de Abogados Penalistas</span>
-  </div>
-</div>
-
-<section id="prensa-teaser">
+<!-- "En los medios" — muro de fotos reales de apariciones en TV, con tratamiento
+     desaturado/degradado a propósito: son capturas de pantalla de distinta calidad
+     y este tratamiento las unifica en vez de mostrarlas nítidas y dispares. -->
+<section id="en-los-medios" class="media-wash">
+  <div class="media-wash-bg"></div>
+  <div class="media-wash-fade"></div>
   <div class="section-inner reveal">
     <div class="center">
       <div class="eyebrow">Prensa y testimonios</div>
       <h2 class="section-title">Una voz habitual en los medios sobre actualidad penal</h2>
-      <p class="section-sub">El Dr. José Luis España participa regularmente de entrevistas y notas sobre derecho penal. Esta es una selección — la lista completa, con testimonios de clientes, está en nuestra sección de prensa.</p>
+      <p class="section-sub">El Dr. José Luis España participa regularmente de entrevistas en televisión, radio y prensa gráfica para analizar la actualidad penal — América 24, Canal 2, Crónica HD y otros medios.</p>
     </div>
-    <div class="press-grid">
-      <a class="press-card" href="prensa/" data-kind="tv">
-        <span class="press-kind tv">Televisión</span>
-        <h3>[PLACEHOLDER] Título de la nota o el segmento de TV</h3>
-        <span class="press-outlet">América 24</span>
-        <span class="press-date">[Fecha]</span>
-        <span class="press-link">Ver nota →</span>
-      </a>
-      <a class="press-card" href="prensa/" data-kind="radio">
-        <span class="press-kind radio">Radio</span>
-        <h3>[PLACEHOLDER] Título de la entrevista radial</h3>
-        <span class="press-outlet">[Nombre de la radio]</span>
-        <span class="press-date">[Fecha]</span>
-        <span class="press-link">Ver nota →</span>
-      </a>
-      <a class="press-card" href="prensa/" data-kind="prensa">
-        <span class="press-kind prensa">Prensa escrita</span>
-        <h3>[PLACEHOLDER] Titular de la nota periodística</h3>
-        <span class="press-outlet">[Nombre del medio]</span>
-        <span class="press-date">[Fecha]</span>
-        <span class="press-link">Ver nota →</span>
-      </a>
+    <div class="media-wall">
+      <a class="media-wall-item" href="prensa/"><img src="fotos/prensa/media-01.jpg" alt="Dr. José Luis España en el piso de América 24" loading="lazy"><span class="lbl">TV</span></a>
+      <a class="media-wall-item" href="prensa/"><img src="fotos/prensa/media-02.jpg" alt="Entrevista al Dr. José Luis España — presentó hábeas corpus" loading="lazy"><span class="lbl">TV</span></a>
+      <a class="media-wall-item" href="prensa/"><img src="fotos/prensa/media-08.jpg" alt="Dr. José Luis España en el programa Confrontados" loading="lazy"><span class="lbl">TV</span></a>
+      <a class="media-wall-item" href="prensa/"><img src="fotos/prensa/media-04.jpg" alt="Entrevista al Dr. José Luis España en Crónica HD" loading="lazy"><span class="lbl">TV</span></a>
+      <a class="media-wall-item" href="prensa/"><img src="fotos/prensa/media-05.jpg" alt="Dr. José Luis España entrevistado en América 24" loading="lazy"><span class="lbl">TV</span></a>
+      <a class="media-wall-item" href="prensa/"><img src="fotos/prensa/media-06.jpg" alt="Dr. José Luis España sobre el delito de usurpación" loading="lazy"><span class="lbl">TV</span></a>
+      <a class="media-wall-item" href="prensa/"><img src="fotos/prensa/media-03.jpg" alt="Dr. José Luis España entrevistado en un canal de Salta" loading="lazy"><span class="lbl">TV</span></a>
+      <a class="media-wall-item" href="prensa/"><img src="fotos/prensa/media-07.jpg" alt="Dr. José Luis España en un móvil en vivo por TV" loading="lazy"><span class="lbl">TV</span></a>
     </div>
-    <p class="center" style="margin-top:34px;">
+    <div class="bastidores-row">
+      <div class="bastidor-photo"><img src="fotos/prensa/bastidores-01.jpg" alt="Dr. José Luis España junto a un colega en un piso de TV" loading="lazy"></div>
+      <div class="bastidor-photo"><img src="fotos/prensa/bastidores-02.jpg" alt="Dr. José Luis España en un estudio de televisión" loading="lazy"></div>
+      <div class="bastidor-photo"><img src="fotos/prensa/bastidores-03.jpg" alt="Dr. José Luis España detrás de cámara junto a colegas" loading="lazy"></div>
+    </div>
+    <p class="bastidores-caption">Detrás de cámara, en distintos pisos de TV</p>
+    <p class="center" style="margin-top:40px;">
       <a class="btn btn-dark" href="prensa/">Ver todas las notas, entrevistas y testimonios →</a>
     </p>
   </div>
@@ -662,7 +645,7 @@
   <span class="fab-whatsapp-text">Escribinos</span>
 </a>
 
-<script src="Assets/site.js?v=20260902a"></script>
+<script src="Assets/site.js?v=20260902d"></script>
 <script>
   // Muestra el aviso de "formulario de multas" solo si se elige esa opción entre los chips
   document.addEventListener('DOMContentLoaded', function () {

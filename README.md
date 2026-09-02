@@ -61,8 +61,13 @@ No hace falta tocar nada más — el resto de la lógica de tracking ya está ar
 
 - Cargar los links reales de notas, entrevistas y testimonios en `/prensa/` (ver instrucciones arriba).
 - Completar el correo real en la sección de contacto de `index.html` (hoy está marcado `[PLACEHOLDER]`).
-- Nombres reales de los medios de radio y prensa gráfica en `/prensa/` y en la franja "En los medios" del home (hoy hay placeholders genéricos salvo América 24 y "Café de Penalistas").
+- Nombres reales de los medios de radio y prensa gráfica en `/prensa/` (hoy hay placeholders genéricos salvo América 24, Canal 2, Crónica HD y "Café de Penalistas").
 - IDs reales de GA4 / Google Ads / Meta Pixel (ver sección de tracking arriba).
+- Sumar fotos de las entrevistas más recientes a `/fotos/prensa/` cuando estén disponibles (hoy la galería usa 8 capturas de TV + 3 fotos "detrás de cámara", todas con un tratamiento desaturado/degradado a propósito por ser capturas de pantalla de calidad dispar).
+
+## Fotos de prensa (`/fotos/prensa/`)
+
+Las fotos de apariciones en TV que cargó el estudio son capturas de pantalla de distinta calidad y antigüedad. Para que se vean cohesivas en vez de pixeladas, se les aplicó un tratamiento uniforme (desaturado + tono azul noche + recorte de las franjas de texto superpuestas) antes de usarlas en el sitio — así "se nota menos" la calidad original, tal como se pidió. Si en el futuro se agregan fotos nuevas de mejor calidad, no hace falta este tratamiento: se pueden usar directamente, más nítidas, y quedarán bien igual junto a las anteriores.
 
 ## Desarrollo
 
