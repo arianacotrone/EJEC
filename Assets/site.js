@@ -2,18 +2,6 @@
    Estudio Jurídico España Cotrone — comportamiento compartido
    ========================================================================== */
 
-// Header sólido al hacer scroll (transparente sobre el hero)
-(function () {
-  var header = document.querySelector('header');
-  if (!header) return;
-  function onScroll() {
-    if (window.scrollY > 40) header.classList.add('is-scrolled');
-    else header.classList.remove('is-scrolled');
-  }
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-})();
-
 // Animación de aparición al hacer scroll (fade + translateY)
 (function () {
   var els = document.querySelectorAll('.reveal');
