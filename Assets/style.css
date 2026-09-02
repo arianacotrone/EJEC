@@ -551,8 +551,8 @@ h2.section-title {
 /* ---------- Equipo ---------- */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 40px;
   margin-top: 40px;
 }
 .team-card {
