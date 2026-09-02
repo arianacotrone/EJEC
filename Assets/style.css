@@ -1038,7 +1038,7 @@ footer a:hover { text-decoration: underline; }
 }
 .hero-portrait-frame {
   position: relative;
-  width: min(320px, 82vw);
+  width: min(450px, 82vw);
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 30px 70px rgba(17,39,64,0.28);
@@ -1399,7 +1399,7 @@ nav.links a.is-active { color: var(--accent) !important; font-weight: 500; }
 /* ---------- Spotlight del referente (bloque propio, separado del team-grid) ---------- */
 .lead-spotlight {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 400px 1fr;
   gap: 40px;
   align-items: start;
   background: var(--paper);
