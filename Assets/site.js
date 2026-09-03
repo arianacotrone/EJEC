@@ -112,22 +112,57 @@ document.addEventListener('DOMContentLoaded', function () {
   counters.forEach(function (el) { io.observe(el); });
 })();
 
-// Selector interactivo de "tipos de causa": pestañas verticales que muestran
-// un panel con detalle + CTA de WhatsApp pre-armado para ese tipo de causa.
+// Selector interactivo de "tipos de causa": pestañas verticales (escritorio) o
+// un <select> compacto (mobile) que muestran un panel con detalle + CTA de
+// WhatsApp pre-armado para ese tipo de causa. Los dos controles quedan
+// sincronizados entre sí para que cambiar de tamaño de pantalla no los
+// desalinee.
 (function () {
   var tabs = document.querySelectorAll('.causa-tab');
-  if (!tabs.length) return;
+  var select = document.querySelector('.causa-select');
+  if (!tabs.length && !select) return;
   var panels = document.querySelectorAll('.causa-panel');
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      var targetId = tab.getAttribute('data-target');
-      tabs.forEach(function (t) { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
-      panels.forEach(function (p) { p.classList.remove('is-active'); });
-      tab.classList.add('is-active');
-      tab.setAttribute('aria-selected', 'true');
-      var panel = document.getElementById(targetId);
-      if (panel) panel.classList.add('is-active');
+  function activateCausa(targetId) {
+    tabs.forEach(function (t) {
+      var isMatch = t.getAttribute('data-target') === targetId;
+      t.classList.toggle('is-active', isMatch);
+      t.setAttribute('aria-selected', isMatch ? 'true' : 'false');
     });
+    panels.forEach(function (p) { p.classList.toggle('is-active', p.id === targetId); });
+    if (select && select.value !== targetId) select.value = targetId;
+  }
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { activateCausa(tab.getAttribute('data-target')); });
+  });
+  if (select) {
+    select.addEventListener('change', function () { activateCausa(select.value); });
+  }
+})();
+
+// Menú mobile: botón hamburguesa que despliega los links del header (antes
+// desaparecían por completo debajo de los 640px y no había forma de navegar
+// a otra sección sin scrollear todo el sitio a mano).
+(function () {
+  var header = document.querySelector('header');
+  var toggle = header && header.querySelector('.nav-toggle');
+  var links = header && header.querySelector('nav.links');
+  if (!header || !toggle || !links) return;
+  function closeMenu() {
+    header.classList.remove('nav-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  toggle.addEventListener('click', function () {
+    var open = header.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  // Cerrar al elegir un link (navegue a una sección o a otra página).
+  links.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') closeMenu();
+  });
+  // Si se agranda la ventana (o se rota el celular) más allá del breakpoint
+  // mobile, evita que el menú quede "abierto" atascado de fondo.
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 640) closeMenu();
   });
 })();
 
