@@ -1008,6 +1008,43 @@ footer a:hover { text-decoration: underline; }
 }
 .urgency-card.featured p { margin-bottom: 18px; }
 
+/* "Primeros pasos" (#urgencia) en mobile: carrusel deslizable con flechas y
+   puntitos, en vez de la grilla de 4 columnas que se usa en desktop. El botón
+   "Evaluemos tu caso" queda siempre visible debajo, no solo en la última tarjeta. */
+.steps-carousel-wrap { position: relative; display: flex; align-items: center; gap: 10px; }
+.steps-track { flex: 1; }
+.steps-arrow {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.steps-dots { display: none; justify-content: center; gap: 7px; margin-top: 16px; }
+.steps-dots .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.25); }
+.steps-dots .dot.is-active { background: var(--accent); }
+@media (max-width: 780px) {
+  .steps-arrow { display: flex; }
+  .steps-dots { display: flex; }
+  .steps-track.dark-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 14px;
+  }
+  .steps-track.dark-grid::-webkit-scrollbar { display: none; }
+  .steps-track .dark-card { flex: 0 0 82%; scroll-snap-align: center; }
+}
+
 /* ---------- Casos (tipos de causa — ilustrativo, no resultados garantizados) ---------- */
 .case-grid {
   display: grid;

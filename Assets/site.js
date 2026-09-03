@@ -166,6 +166,27 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 })();
 
+// Carrusel de "Primeros pasos" (#urgencia) en mobile: flechas + puntitos.
+// En desktop el CSS vuelve a mostrar la grilla de 4 columnas de siempre.
+(function () {
+  var track = document.getElementById('stepsTrack');
+  var dotsWrap = document.getElementById('stepsDots');
+  if (!track) return;
+  var dots = dotsWrap ? dotsWrap.querySelectorAll('.dot') : [];
+  window.stepsScroll = function (dir) {
+    var card = track.querySelector('.dark-card');
+    if (!card) return;
+    var gap = 14;
+    track.scrollBy({ left: dir * (card.offsetWidth + gap), behavior: 'smooth' });
+  };
+  track.addEventListener('scroll', function () {
+    var card = track.querySelector('.dark-card');
+    if (!card) return;
+    var idx = Math.round(track.scrollLeft / (card.offsetWidth + 14));
+    dots.forEach(function (d, i) { d.classList.toggle('is-active', i === idx); });
+  });
+})();
+
 // Filtro de la grilla de prensa (Todas / TV / Radio / Prensa escrita).
 (function () {
   var filterBtns = document.querySelectorAll('.press-filter-btn');
