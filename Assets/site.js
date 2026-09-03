@@ -248,7 +248,7 @@ function enviarConsultaChips(formPrefix, telefono, saludo) {
   if (nombre) {
     msg += 'Hola, mi nombre es ' + nombre + ' y quería hacerles una consulta sobre: ' + area + '\n\n';
   } else {
-    msg += 'Hola, quería hacerles una consulta.\n\n';
+    msg += 'Hola, quería hacerles una consulta sobre: ' + area + '.\n\n';
   }
 
   msg += detalle;
