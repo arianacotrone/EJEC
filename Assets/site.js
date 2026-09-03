@@ -228,29 +228,36 @@ document.addEventListener('DOMContentLoaded', function () {
   Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
 })();
 
-// Formulario de contacto compacto: nombre y teléfono opcionales + área elegida
-// en un desplegable + detalle. Arma el mensaje de WhatsApp con todo prolijo.
+// Formulario de contacto: nombre opcional + área elegida + detalle.
 function enviarConsultaChips(formPrefix, telefono, saludo) {
   var nombreEl = document.getElementById(formPrefix + 'nombre');
-  var telefonoEl = document.getElementById(formPrefix + 'telefono');
   var detalleEl = document.getElementById(formPrefix + 'detalle');
   var areaEl = document.getElementById(formPrefix + 'area');
   var nombre = (nombreEl && nombreEl.value.trim()) || '';
-  var telefonoContacto = (telefonoEl && telefonoEl.value.trim()) || '';
   var detalle = (detalleEl && detalleEl.value.trim()) || '';
-  var area = areaEl ? areaEl.value : 'Consulta general';
+  var area = areaEl ? areaEl.value : '';
 
   if (!detalle) {
     if (detalleEl) { detalleEl.focus(); detalleEl.style.borderColor = '#e64a28'; }
     return;
   }
 
-  var msg = saludo + '%0A';
-  if (nombre) msg += 'Nombre: ' + encodeURIComponent(nombre) + '%0A';
-  if (telefonoContacto) msg += 'Teléfono de contacto: ' + encodeURIComponent(telefonoContacto) + '%0A';
-  msg += 'Área: ' + encodeURIComponent(area) + '%0A';
-  msg += 'Detalle: ' + encodeURIComponent(detalle) + '%0A';
-  msg += 'Origen: ' + encodeURIComponent(getOrigen());
+  // Armado del mensaje en tono natural
+  var msg = '';
+
+  if (nombre) {
+    msg += 'Hola, mi nombre es ' + nombre + ' y quería hacerles una consulta.\n\n';
+  } else {
+    msg += 'Hola, quería hacerles una consulta.\n\n';
+  }
+
+  msg += detalle;
+
+  if (area) {
+    msg += '\n\n(Consulta sobre: ' + area + ')';
+  }
+
   if (typeof trackConversion === 'function') trackConversion('formulario_chips_' + formPrefix);
-  window.open('https://wa.me/' + telefono + '?text=' + msg, '_blank');
+  
+  window.open('https://wa.me/' + telefono + '?text=' + encodeURIComponent(msg), '_blank');
 }
