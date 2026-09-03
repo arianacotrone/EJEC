@@ -856,6 +856,14 @@ img.team-card-photo,
   padding: 12px 14px;
   margin-bottom: 22px;
 }
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 560px) {
+  .field-row { grid-template-columns: 1fr; }
+}
 .field { margin-bottom: 18px; }
 .field label {
   display: block;
@@ -1172,14 +1180,16 @@ footer a:hover { text-decoration: underline; }
 }
 
 @media (max-width: 640px) {
-  .nav-wrap { flex-wrap: nowrap; }
+  header { padding: 14px 16px; }
+  .nav-wrap { flex-wrap: nowrap; gap: 10px; }
   header .nav-wrap > .btn,
   header .nav-wrap > .nav-toggle { margin-left: auto; }
-  .brand-mark { min-width: 0; }
-  .brand-mark .brand-logo { width: 56px; height: 56px; }
-  .brand-mark .brand-name { font-size: 15px; max-width: none; }
-  .brand-name-sub { margin-left: 13px; }
-  .btn-icon-contact { width: 34px; height: 34px; font-size: 14px; }
+  .brand-mark { min-width: 0; gap: 8px; }
+  .brand-mark .brand-logo { width: 44px; height: 44px; }
+  .brand-mark .brand-name { font-size: 13px; max-width: none; white-space: nowrap; }
+  .brand-name-sub { margin-left: 0; font-size: 0.78em; letter-spacing: 0.2px; white-space: nowrap; }
+  .btn-icon-contact { width: 32px; height: 32px; font-size: 13px; }
+  .icon-btn { width: 32px; height: 32px; font-size: 15px; }
   section { padding: 64px 20px; }
   .hero { padding: 130px 20px 80px; }
   .hero h1 { font-size: 2.1rem; }

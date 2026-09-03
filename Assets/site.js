@@ -207,13 +207,15 @@ document.addEventListener('DOMContentLoaded', function () {
   Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
 })();
 
-// Formulario de contacto por chips (mínimos campos): nombre opcional + área
-// elegida con un click + detalle. Arma el mensaje de WhatsApp con todo prolijo.
+// Formulario de contacto compacto: nombre y teléfono opcionales + área elegida
+// en un desplegable + detalle. Arma el mensaje de WhatsApp con todo prolijo.
 function enviarConsultaChips(formPrefix, telefono, saludo) {
   var nombreEl = document.getElementById(formPrefix + 'nombre');
+  var telefonoEl = document.getElementById(formPrefix + 'telefono');
   var detalleEl = document.getElementById(formPrefix + 'detalle');
-  var areaEl = document.querySelector('input[name="' + formPrefix + 'area"]:checked');
+  var areaEl = document.getElementById(formPrefix + 'area');
   var nombre = (nombreEl && nombreEl.value.trim()) || '';
+  var telefonoContacto = (telefonoEl && telefonoEl.value.trim()) || '';
   var detalle = (detalleEl && detalleEl.value.trim()) || '';
   var area = areaEl ? areaEl.value : 'Consulta general';
 
@@ -224,6 +226,7 @@ function enviarConsultaChips(formPrefix, telefono, saludo) {
 
   var msg = saludo + '%0A';
   if (nombre) msg += 'Nombre: ' + encodeURIComponent(nombre) + '%0A';
+  if (telefonoContacto) msg += 'Teléfono de contacto: ' + encodeURIComponent(telefonoContacto) + '%0A';
   msg += 'Área: ' + encodeURIComponent(area) + '%0A';
   msg += 'Detalle: ' + encodeURIComponent(detalle) + '%0A';
   msg += 'Origen: ' + encodeURIComponent(getOrigen());
