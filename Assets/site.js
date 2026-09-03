@@ -253,10 +253,6 @@ function enviarConsultaChips(formPrefix, telefono, saludo) {
 
   msg += detalle;
 
-  if (area) {
-    msg += '\n\n(Consulta sobre: ' + area + ')';
-  }
-
   if (typeof trackConversion === 'function') trackConversion('formulario_chips_' + formPrefix);
   
   window.open('https://wa.me/' + telefono + '?text=' + encodeURIComponent(msg), '_blank');
