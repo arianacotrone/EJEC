@@ -28,7 +28,11 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
-html, body { max-width: 100%; overflow-x: hidden; }
+/* Nota: NO usar "overflow-x: hidden" acá — en html/body rompe el
+   "position: sticky" del header (el navegador pasa overflow-y a "auto" en
+   ambos y el header deja de quedar fijo, se va con el scroll). El desborde
+   horizontal real ya se corrigió en el origen (ver .chip-option más abajo). */
+html, body { max-width: 100%; }
 
 body {
   font-family: var(--sans);
@@ -85,14 +89,15 @@ a { color: inherit; }
 }
 
 /* ---------- Header ---------- */
-/* Fondo azul degradado fijo y permanente (no transparente, no depende del scroll)
-   — mismo lenguaje visual que el hero navy del sitio, para que el header se lea
-   siempre como una pieza sólida y prolija, tanto sobre el hero como sobre el resto
-   del contenido. */
+/* Fondo azul degradado fijo y permanente (no depende del scroll), pero con
+   efecto "vidrio esmerilado": semitransparente + blur, así el contenido que
+   pasa por detrás se ve difuminado en vez de un panel sólido y opaco. */
 header,
 header.is-scrolled,
 header.on-light {
-  background: linear-gradient(115deg, #1a2c4d 0%, #101d38 55%, #0a1220 100%);
+  background: linear-gradient(115deg, rgba(26,44,77,0.68) 0%, rgba(16,29,56,0.72) 55%, rgba(10,18,32,0.76) 100%);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
 }
 header nav.links a,
 header.is-scrolled nav.links a,
@@ -1643,7 +1648,7 @@ nav.links a.is-active { color: var(--accent) !important; font-weight: 500; }
   z-index: 0;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
 .hero-mosaic-bg img {
   width: 100%;
@@ -1669,7 +1674,7 @@ nav.links a.is-active { color: var(--accent) !important; font-weight: 500; }
 .hero-inner-center .hero-cta { display: flex; flex-direction: column; align-items: center; }
 .hero-inner-center .hero-cta-buttons { justify-content: center; }
 @media (max-width: 860px) {
-  .hero-mosaic-bg { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(6, 1fr); }
+  .hero-mosaic-bg { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(8, 1fr); }
 }
 
 /* ---------- Muro de fotos reales "En los medios" ---------- */
