@@ -331,8 +331,15 @@ nav.links a:hover { color: #fff; }
   cursor: pointer;
   transition: transform 0.15s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
   white-space: nowrap;
+  max-width: 100%;
 }
 .btn:hover { transform: translateY(-2px); }
+/* Salvavidas para botones con texto largo (p. ej. "Ver todas las áreas de
+   práctica del estudio →") en pantallas angostas: en vez de desbordar la
+   página hacia el costado, el texto pasa a envolver en dos líneas. */
+@media (max-width: 600px) {
+  .btn { white-space: normal; text-align: center; }
+}
 
 /* Link de texto simple para un tercer CTA sin competir visualmente con los dos botones principales */
 .hero-text-link {
