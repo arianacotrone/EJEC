@@ -503,12 +503,11 @@
     var patente = document.getElementById('patente').value || 'Sin especificar';
     var jurisdiccion = document.getElementById('jurisdiccion').value || 'Sin especificar';
     var detalle = document.getElementById('detalle').value || 'Sin especificar';
-    var msg = 'Hola, quiero consultar por una multa de tránsito.%0A' +
+    var msg = 'Hola, quiero consultar por una multa de tránsito, te comparto los datos:%0A' +
       'Nombre: ' + encodeURIComponent(nombre) + '%0A' +
       'Patente: ' + encodeURIComponent(patente) + '%0A' +
       'Jurisdicción: ' + encodeURIComponent(jurisdiccion) + '%0A' +
-      'Detalle: ' + encodeURIComponent(detalle) + '%0A' +
-      'Origen: ' + encodeURIComponent(getOrigen());
+      'Detalle: ' + encodeURIComponent(detalle) + '%0A';
     trackConversion('formulario_consulta');
     window.open('https://wa.me/5491161842886?text=' + msg, '_blank');
   }
