@@ -428,8 +428,8 @@ nav.links a:hover { color: #fff; }
 /* Variante clara del hero de infracciones/ — misma fórmula, otra foto */
 .hero.hero-light.hero-multas {
   background:
-    linear-gradient(100deg, rgba(248,249,250,0.96) 0%, rgba(248,249,250,0.90) 32%, rgba(248,249,250,0.60) 62%, rgba(248,249,250,0.38) 100%),
-    url('hero-multas-bg.jpg');
+     linear-gradient(100deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 32%, rgba(0,0,0,0.4) 62%, rgba(0,0,0,0.2) 100%),
+     url('hero-multas-bg.jpg');
   background-size: cover;
   background-position: center;
 }
