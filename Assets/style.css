@@ -425,20 +425,31 @@ nav.links a:hover { color: #fff; }
 .hero.hero-light .hero-stat-num { color: var(--ink); }
 .hero.hero-light .hero-stat-label { color: rgba(30,35,42,0.6); }
 
-/* Variante clara del hero de infracciones/ — misma fórmula, otra foto */
+/* Variante del hero de infracciones — Fondo oscuro con textos blancos */
 .hero.hero-light.hero-multas {
   background:
-     linear-gradient(100deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 32%, rgba(0,0,0,0.4) 62%, rgba(0,0,0,0.2) 100%),
+     linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.65) 32%, rgba(0,0,0,0.45) 62%, rgba(0,0,0,0.25) 100%),
      url('hero-multas-bg.jpg');
   background-size: cover;
   background-position: center;
+  color: #ffffff; /* Asegura el color blanco base */
 }
+
+/* Kicker (texto pequeño sobre el título) */
+.hero.hero-light.hero-multas .kicker {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Título principal (h1) */
 .hero.hero-multas h1 {
   font-size: clamp(2.9rem, 5.4vw, 4.8rem);
   max-width: 13ch;
+  color: #ffffff;
 }
+
+/* Texto del lado derecho (h2) */
 .hero.hero-multas .hero-side h2 {
-  color: rgba(30,35,42,0.82);
+  color: rgba(255, 255, 255, 0.9);
 }
 .hero-inner {
   max-width: var(--maxw);
