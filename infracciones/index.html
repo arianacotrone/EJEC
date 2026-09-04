@@ -84,7 +84,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Estilos y comportamiento compartidos del sitio -->
-<link rel="stylesheet" href="../Assets/style.css?v=20260903d">
+<link rel="stylesheet" href="../Assets/style.css?v=20260904a">
 
 <!-- ============================================================
      [PLACEHOLDER] GOOGLE ANALYTICS 4 (GA4)
@@ -169,8 +169,11 @@
     </div>
     <div class="hero-side">
       <h2>Antes de pagar una multa de tránsito, vale la pena saber si tenés motivos válidos para impugnarla.</h2>
-      <a class="btn btn-whatsapp" href="https://wa.me/5491161842886?text=Hola%2C%20quiero%20consultar%20por%20una%20multa%20de%20tr%C3%A1nsito" target="_blank" rel="noopener" onclick="trackConversion('whatsapp_directo_hero')">WhatsApp directo</a>
-      <a href="#consulta" style="color:var(--accent); font-weight:600;">Completá el formulario →</a></p>
+      <div class="hero-cta-buttons" style="justify-content:flex-end;">
+        <a class="btn btn-whatsapp" href="https://wa.me/5491161842886?text=Hola%2C%20quiero%20consultar%20por%20una%20multa%20de%20tr%C3%A1nsito" target="_blank" rel="noopener" onclick="trackConversion('whatsapp_directo_hero')">WhatsApp directo</a>
+        <a class="btn btn-outline-light" href="tel:+5491161842886" onclick="trackConversion('llamada_hero_multas')">Llamar ahora</a>
+        <a class="hero-text-link" href="#consulta">Completá el formulario →</a>
+      </div>
     </div>
   </div>
 </div>
@@ -190,7 +193,7 @@
   </div>
 </section>
 
-<section id="urgencia">
+<section id="urgencia" class="urgencia-3card">
   <div class="section-inner reveal">
     <div class="dark-panel">
       <div class="center">
@@ -246,6 +249,9 @@
         <p>Descargos a través del portal digital provincial y análisis particular de las multas municipales.</p>
       </div>
     </div>
+    <p class="center" style="margin-top:30px;">
+      <a href="#consulta" style="color:var(--accent); font-weight:600;">¿Cuál es tu caso? Completá el formulario →</a>
+    </p>
   </div>
 </section>
 
@@ -318,6 +324,9 @@
         <p>Controlamos los plazos y te mantenemos al tanto hasta la resolución.</p>
       </div>
     </div>
+    <p class="center" style="margin-top:32px;">
+      <a href="#consulta" style="color:var(--accent); font-weight:600;">Empezá por acá — Completá el formulario →</a>
+    </p>
   </div>
 </section>
 
@@ -348,18 +357,33 @@
         <p>Análisis de la señalización y las condiciones del lugar al momento de la infracción para evaluar si correspondía impugnar.</p>
       </div>
     </div>
+    <p class="center" style="margin-top:32px;">
+      <a href="#consulta" style="color:var(--accent); font-weight:600;">Contanos tu caso — Completá el formulario →</a>
+    </p>
   </div>
 </section>
 
 <section id="sobre">
-  <div class="section-inner narrow reveal">
+  <div class="section-inner reveal">
     <div class="center">
       <div class="eyebrow">Los especialistas</div>
       <h2 class="section-title">Sobre el equipo</h2>
+      <p class="section-sub" style="max-width:560px; margin-left:auto; margin-right:auto;">Trabajamos con trato directo entre los abogados a cargo y cada cliente, sin intermediarios, disponibles ante cualquier urgencia.</p>
     </div>
-    <p class="center" style="margin-top:32px; max-width:560px; margin-left:auto; margin-right:auto; color:var(--muted);">Trabajamos con trato directo entre los abogados a cargo y cada cliente, sin intermediarios, disponibles ante cualquier urgencia.</p>
-    <p class="center" style="margin-top:18px;">
-      <a href="../equipo/" class="btn btn-outline-dark">Conocé al equipo →</a>
+    <div class="lead-spotlight" style="margin-top:36px;">
+      <div class="lead-spotlight-photo">
+        <img src="../fotos/Patricia1.jpg?v=20260902f" alt="Foto de la Dra. Patricia Cotrone">
+        <span class="lead-flag">Infracciones de tránsito</span>
+      </div>
+      <div class="lead-spotlight-body">
+        <h3>Dra. Patricia Beatriz Cotrone</h3>
+        <div class="cred">Abogada y mediadora · Más de 30 años de ejercicio del derecho</div>
+        <p class="bio">Patricia es la principal responsable del área de Infracciones de Tránsito del estudio. Analiza personalmente cada acta para evaluar si conviene pagar con descuento o presentar un descargo, y acompaña el trámite de punta a punta, con respuestas directas y sin intermediarios.</p>
+        <p class="bio">Para causas penales y el resto de las áreas del estudio, contás además con el Dr. José Luis España y el Dr. Adriel España Cotrone.</p>
+      </div>
+    </div>
+    <p class="center" style="margin-top:24px;">
+      <a href="../equipo/" class="btn btn-outline-dark">Conocé al equipo completo →</a>
     </p>
   </div>
 </section>
@@ -370,38 +394,48 @@
       <div class="eyebrow">Lo que dicen nuestros clientes</div>
       <h2 class="section-title">Testimonios</h2>
     </div>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <span class="testimonial-quote-mark">"</span>
-        <p class="testimonial-text">Marcos R. (CABA) - Me llegaron tres fotomultas por exceso de velocidad en un tramo mal señalizado de la Panamericana. Me asesoraron rápidamente, presentamos el descargo por falta de notificación en término y terminaron anulando las tres infracciones. Un alivio total.</p>
-        <div class="testimonial-attrib">Cliente — Infracciones de tránsito</div>
+    <div class="testi-carousel-wrap">
+      <button type="button" class="testi-arrow testi-arrow-prev" aria-label="Testimonio anterior" onclick="testiScroll(-1)">‹</button>
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <span class="testi-quote-mark">"</span>
+          <p class="testi-text">Me llegaron tres fotomultas por exceso de velocidad en un tramo mal señalizado de la Panamericana. Me asesoraron rápidamente, presentamos el descargo por falta de notificación en término y terminaron anulando las tres infracciones. Un alivio total.</p>
+          <div class="testi-attrib">Marcos R. — CABA</div>
+        </div>
+        <div class="testi-card">
+          <span class="testi-quote-mark">"</span>
+          <p class="testi-text">Me hicieron un acta de infracción por cruzar en rojo, pero el semáforo estaba descompuesto y titilaba de forma errónea. El equipo armó un escrito impecable con las fotos del lugar del hecho y el juez de faltas desestimó el acta.</p>
+          <div class="testi-attrib">Silvina M. — Almirante Brown</div>
+        </div>
+        <div class="testi-card">
+          <span class="testi-quote-mark">"</span>
+          <p class="testi-text">Apareció a mi nombre una infracción en una provincia a la que nunca viajé con mi auto. Se trataba de un caso de patente clonada. Gracias a la gestión legal, lograron la nulidad absoluta del acta.</p>
+          <div class="testi-attrib">Claudia F. — CABA</div>
+        </div>
+        <div class="testi-card">
+          <span class="testi-quote-mark">"</span>
+          <p class="testi-text">Tenía una deuda acumulada enorme por varias faltas leves de estacionamiento de hacía años. El estudio negoció ante la justicia de faltas y logramos una quita del 60% sobre el total más un plan de pagos en cuotas.</p>
+          <div class="testi-attrib">Nicolás B. — CABA</div>
+        </div>
+        <div class="testi-card">
+          <span class="testi-quote-mark">"</span>
+          <p class="testi-text">Iba con exceso de velocidad leve y el valor original de la multa era desproporcionado. Con el recurso que presentaron, el juez reconoció la falta de antecedentes y aplicó el mínimo legal, reduciendo el costo a menos de la mitad.</p>
+          <div class="testi-attrib">Lucía B. — Lanús</div>
+        </div>
+        <div class="testi-card">
+          <span class="testi-quote-mark">"</span>
+          <p class="testi-text">Necesitaba vender mi auto con urgencia y al pedir el libre deuda me saltaron multas de un titular anterior. El estudio presentó el recurso correspondiente y levantaron la traba para que pudiera hacer la transferencia sin pagarlas.</p>
+          <div class="testi-attrib">Nicolás G. — Lanús</div>
+        </div>
       </div>
-      <div class="testimonial-card">
-        <span class="testimonial-quote-mark">"</span>
-        <p class="testimonial-text">Silvina M. (Almirante Brown) - Me hicieron un acta de infracción por cruzar en rojo, pero el semáforo estaba descompuesto y titilaba de forma errónea. El equipo armó un escrito impecable con las fotos del lugar del hecho y el juez de faltas desestimó el acta.</p>
-        <div class="testimonial-attrib">Cliente — Infracciones de tránsito</div>
-      </div>
-      <div class="testimonial-card">
-        <span class="testimonial-quote-mark">"</span>
-        <p class="testimonial-text">Claudia F. (CABA) - Apareció a mi nombre una infracción en una provincia a la que nunca viajé con mi auto. Se trataba de un caso de patente clonada. Gracias a la gestión legal, lograron la nulidad absoluta del acta.</p>
-        <div class="testimonial-attrib">Cliente — Infracciones de tránsito</div>
-      </div>
-      <div class="testimonial-card">
-        <span class="testimonial-quote-mark">"</span>
-        <p class="testimonial-text">Nicolás B. (CABA) - Tenía una deuda acumulada enorme por varias faltas leves de estacionamiento de hacía años. El estudio negoció ante la justicia de faltas y logramos una quita del 60% sobre el total más un plan de pagos en cuotas.</p>
-        <div class="testimonial-attrib">Cliente — Infracciones de tránsito</div>
-      </div>
-      <div class="testimonial-card">
-        <span class="testimonial-quote-mark">"</span>
-        <p class="testimonial-text">Lucía B. (Lanús) - Iba con exceso de velocidad leve y el valor original de la multa era desproporcionado. Con el recurso que presentaron, el juez reconoció la falta de antecedentes y aplicó el mínimo legal, reduciendo el costo a menos de la mitad.</p>
-        <div class="testimonial-attrib">Cliente — Infracciones de tránsito</div>
-      </div>
-      <div class="testimonial-card">
-        <span class="testimonial-quote-mark">"</span>
-        <p class="testimonial-text">Nicolás G. (Lanús) - Necesitaba vender mi auto con urgencia y al pedir el libre deuda me saltaron multas de un titular anterior. El estudio presentó el recurso correspondiente y levantaron la traba para que pudiera hacer la transferencia sin pagarlas.</p>
-        <div class="testimonial-attrib">Cliente — Infracciones de tránsito</div>
-      </div>
+      <button type="button" class="testi-arrow testi-arrow-next" aria-label="Testimonio siguiente" onclick="testiScroll(1)">›</button>
     </div>
+    <div class="testi-dots" id="testiDots">
+      <span class="dot is-active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+    <p class="center" style="margin-top:26px;">
+      <a href="#consulta" style="color:var(--accent); font-weight:600;">Contanos tu caso — Completá el formulario →</a>
+    </p>
   </div>
 </section>
 
@@ -425,31 +459,48 @@
   </div>
 </section>
 
-<section style="background:var(--paper-soft);">
+<section id="otros-servicios" style="background:var(--paper-soft);">
   <div class="section-inner reveal">
-    <div class="dark-panel">
-      <div class="center">
-        <span class="eyebrow-badge on-dark">Otros servicios</span>
-        <h2 class="section-title">Además de multas, también asesoramos en estas áreas</h2>
+    <div class="center">
+      <div class="eyebrow">Otros servicios</div>
+      <h2 class="section-title">Además de multas, también asesoramos en estas áreas</h2>
+      <p class="section-sub">El estudio también atiende otras causas contravencionales y penales vinculadas al tránsito — elegí un área para ver cómo trabajamos.</p>
+    </div>
+    <div class="causas-wrap">
+      <select class="causa-select" aria-label="Elegí un área">
+        <option value="o-contra" selected>Contravenciones</option>
+        <option value="o-accidentes">Accidentes de tránsito</option>
+        <option value="o-admin">Procedimientos administrativos</option>
+      </select>
+      <div class="causa-tabs" role="tablist">
+        <button class="causa-tab is-active" data-target="o-contra" role="tab" aria-selected="true">Contravenciones</button>
+        <button class="causa-tab" data-target="o-accidentes" role="tab" aria-selected="false">Accidentes de tránsito</button>
+        <button class="causa-tab" data-target="o-admin" role="tab" aria-selected="false">Procedimientos administrativos</button>
       </div>
-      <div class="dark-grid">
-        <div class="dark-card">
+      <div class="causa-panels">
+        <div class="causa-panel is-active" id="o-contra">
+          <span class="case-tag">Otras causas</span>
           <h3>Contravenciones</h3>
           <p>Asesoramiento en causas contravencionales vinculadas al tránsito.</p>
+          <a class="btn btn-whatsapp" href="https://wa.me/5491161842886?text=Hola%2C%20necesito%20una%20consulta%20por%20una%20contravenci%C3%B3n" target="_blank" rel="noopener" onclick="trackConversion('otros_contravenciones')">Consultar por esta causa</a>
         </div>
-        <div class="dark-card">
+        <div class="causa-panel" id="o-accidentes">
+          <span class="case-tag">Otras causas</span>
           <h3>Accidentes de tránsito</h3>
           <p>Consecuencias penales derivadas de siniestros viales.</p>
+          <a class="btn btn-whatsapp" href="https://wa.me/5491161842886?text=Hola%2C%20necesito%20una%20consulta%20por%20un%20accidente%20de%20tr%C3%A1nsito" target="_blank" rel="noopener" onclick="trackConversion('otros_accidentes')">Consultar por esta causa</a>
         </div>
-        <div class="dark-card">
+        <div class="causa-panel" id="o-admin">
+          <span class="case-tag">Otras causas</span>
           <h3>Procedimientos administrativos</h3>
           <p>Otras sanciones y procedimientos ante organismos municipales.</p>
+          <a class="btn btn-whatsapp" href="https://wa.me/5491161842886?text=Hola%2C%20necesito%20una%20consulta%20por%20un%20procedimiento%20administrativo" target="_blank" rel="noopener" onclick="trackConversion('otros_administrativo')">Consultar por esta causa</a>
         </div>
       </div>
-      <p class="center" style="margin-top:30px;">
-        <a href="../#causas" class="btn btn-outline-light">Ver todas las áreas de práctica del estudio →</a>
-      </p>
     </div>
+    <p class="center" style="margin-top:30px;">
+      <a href="../#causas" class="btn btn-outline-dark">Ver todas las áreas de práctica del estudio →</a>
+    </p>
   </div>
 </section>
 
@@ -470,7 +521,7 @@
   <span class="fab-whatsapp-text">Escribinos</span>
 </a>
 
-<script src="../Assets/site.js?v=20260903d"></script>
+<script src="../Assets/site.js?v=20260904a"></script>
 <script>
   function enviarConsulta() {
     var nombre = document.getElementById('nombre').value || 'Sin especificar';
