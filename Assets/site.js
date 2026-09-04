@@ -187,6 +187,27 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 })();
 
+// Carrusel de "Testimonios" (infracciones/): flechas + puntitos, siempre
+// activo (no solo en mobile) para invitar a deslizar y ver las 6 tarjetas.
+(function () {
+  var track = document.getElementById('testiTrack');
+  var dotsWrap = document.getElementById('testiDots');
+  if (!track) return;
+  var dots = dotsWrap ? dotsWrap.querySelectorAll('.dot') : [];
+  var gap = 20;
+  window.testiScroll = function (dir) {
+    var card = track.querySelector('.testi-card');
+    if (!card) return;
+    track.scrollBy({ left: dir * (card.offsetWidth + gap), behavior: 'smooth' });
+  };
+  track.addEventListener('scroll', function () {
+    var card = track.querySelector('.testi-card');
+    if (!card) return;
+    var idx = Math.round(track.scrollLeft / (card.offsetWidth + gap));
+    dots.forEach(function (d, i) { d.classList.toggle('is-active', i === idx); });
+  });
+})();
+
 // Filtro de la grilla de prensa (Todas / TV / Radio / Prensa escrita).
 (function () {
   var filterBtns = document.querySelectorAll('.press-filter-btn');

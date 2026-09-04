@@ -425,10 +425,12 @@ nav.links a:hover { color: #fff; }
 .hero.hero-light .hero-stat-num { color: var(--ink); }
 .hero.hero-light .hero-stat-label { color: rgba(30,35,42,0.6); }
 
-/* Variante del hero de infracciones — Fondo oscuro con textos blancos */
+/* Variante del hero de infracciones — Fondo oscuro con textos blancos, mismo
+   tono navy que el hero-mosaic de la home (en vez de negro puro) para que
+   las dos páginas compartan la misma estética oscura. */
 .hero.hero-light.hero-multas {
   background:
-     linear-gradient(100deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.65) 32%, rgba(0,0,0,0.45) 62%, rgba(0,0,0,0.25) 100%),
+     linear-gradient(100deg, rgba(11,18,32,0.90) 0%, rgba(11,18,32,0.74) 32%, rgba(11,18,32,0.55) 62%, rgba(11,18,32,0.32) 100%),
      url('hero-multas-bg.jpg');
   background-size: cover;
   background-position: center;
@@ -670,6 +672,15 @@ h2.section-title {
 @media (min-width: 1024px) {
   #urgencia .dark-grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* infracciones/: "Antes de pagar" tiene 3 tarjetas, no 4 — la regla de arriba
+   las dejaba corridas a la izquierda con una columna vacía a la derecha.
+   Con esta clase (más específica) quedan centradas en su propio ancho. */
+@media (min-width: 1024px) {
+  #urgencia.urgencia-3card .dark-grid {
+    grid-template-columns: repeat(3, minmax(260px, 320px));
+    justify-content: center;
   }
 }
 .dark-card {
@@ -1167,6 +1178,82 @@ footer a:hover { text-decoration: underline; }
   font-weight: 300;
   color: var(--muted);
   margin-top: 2px;
+}
+
+/* ---------- Testimonios: carrusel horizontal ----------
+   Tarjetas prolijas (sin el borde punteado anterior) en una fila que se
+   desliza — la última queda parcialmente cortada a propósito, para invitar
+   a seguir deslizando en vez de mostrarlas todas apiladas en una grilla. */
+.testi-carousel-wrap { position: relative; display: flex; align-items: stretch; gap: 12px; margin-top: 36px; }
+.testi-track {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px 4px 10px;
+}
+.testi-track::-webkit-scrollbar { display: none; }
+.testi-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 28px;
+  box-shadow: 0 18px 44px rgba(20,20,20,0.05);
+  display: flex;
+  flex-direction: column;
+}
+.testi-quote-mark {
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  color: var(--accent);
+  line-height: 1;
+  display: block;
+  margin-bottom: 6px;
+}
+.testi-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--text);
+  line-height: 1.55;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+.testi-attrib {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.testi-arrow {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  align-self: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(20,20,20,0.06);
+}
+@media (min-width: 700px) { .testi-arrow { display: flex; } }
+.testi-dots { display: flex; justify-content: center; gap: 7px; margin-top: 18px; }
+.testi-dots .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(30,35,42,0.18); }
+.testi-dots .dot.is-active { background: var(--accent); }
+@media (max-width: 640px) {
+  .testi-card { flex-basis: 82%; }
 }
 
 /* ---------- FAQ (acordeón nativo <details>) ---------- */
