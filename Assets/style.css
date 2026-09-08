@@ -2047,7 +2047,7 @@ nav.links a.is-active { color: var(--accent) !important; font-weight: 500; }
 .hero.hero-light.hero-amparos {
   background:
      linear-gradient(100deg, rgba(11,18,32,0.90) 0%, rgba(11,18,32,0.74) 32%, rgba(11,18,32,0.55) 62%, rgba(11,18,32,0.32) 100%),
-     url('../fotos/Estudio-cartel.jpg?v=20260905a');
+     url('../fotos/salud.jpg');
   background-size: cover;
   background-position: center;
   color: #ffffff;
