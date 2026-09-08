@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Notas y Artículos | Estudio Jurídico España Cotrone</title>
+<meta name="description" content="Artículos y notas de opinión de los abogados del Estudio Jurídico España Cotrone sobre derecho penal e infracciones de tránsito." />
+
+<!-- Mismas hojas de estilo y script del resto del sitio -->
+<link rel="stylesheet" href="../Assets/style.css?v=20260831c" />
+<link rel="stylesheet" href="notas.css?v=1" />
+
+<!-- Tipografías (si ya las carga Assets/style.css, esta línea no molesta: el navegador la cachea) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="notas-page">
+
+<!--
+  ======================================================================
+  HEADER: pegar acá el mismo bloque <header> que ya tenés en index.html
+  o en infracciones/index.html (logo, "Estudio Jurídico / España Cotrone",
+  botón de contacto). Lo dejo afuera a propósito para que quede
+  pixel a pixel igual al resto del sitio en vez de que yo lo reconstruya
+  a ojo.
+  ======================================================================
+-->
+
+<main>
+
+  <section class="notas-hero">
+    <p class="notas-hero__kicker">Escritos del Estudio</p>
+    <h1>Notas y Artículos</h1>
+    <p>Reflexiones y artículos de nuestros abogados sobre derecho penal, infracciones de tránsito y la práctica jurídica del día a día.</p>
+  </section>
+
+  <!-- Notas destacadas -->
+  <section class="notas-destacadas">
+    <div id="notas-destacadas-grid" class="notas-destacadas__grid">
+      <!-- Se completa por JS con hasta 3 tarjetas -->
+    </div>
+  </section>
+
+  <!-- Estados de carga / error / vacío -->
+  <p id="notas-estado-cargando" class="notas-estado">Cargando notas…</p>
+  <p id="notas-estado-error" class="notas-estado oculto">No pudimos cargar las notas en este momento. Volvé a intentar más tarde.</p>
+  <p id="notas-estado-vacio" class="notas-estado oculto">Todavía no hay notas publicadas.</p>
+
+  <!-- Listado completo -->
+  <section class="notas-listado">
+    <h2>Todas las notas</h2>
+    <div id="notas-listado-items">
+      <!-- Se completa por JS -->
+    </div>
+  </section>
+
+</main>
+
+<!--
+  ======================================================================
+  FOOTER: pegar acá el mismo bloque <footer> que ya tenés en las otras
+  páginas del sitio.
+  ======================================================================
+-->
+
+<!-- Modal de nota completa -->
+<div id="nota-modal" class="nota-modal" hidden>
+  <div class="nota-modal__panel" role="dialog" aria-modal="true" aria-labelledby="nota-modal-titulo">
+    <button id="nota-modal-cerrar" class="nota-modal__cerrar" aria-label="Cerrar">✕</button>
+    <p id="nota-modal-meta" class="nota-modal__meta"></p>
+    <h2 id="nota-modal-titulo" class="nota-modal__titulo"></h2>
+    <div id="nota-modal-cuerpo" class="nota-modal__cuerpo"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="../Assets/site.js?v=e"></script>
+<script src="notas.js?v=1"></script>
+</body>
+</html>
