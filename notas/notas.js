@@ -266,7 +266,7 @@ async function compartirInstagram(nota, aviso) {
       await navigator.share({
         files: [archivo],
         title: nota.titulo,
-        text: nota.titulo + " — Estudio Jurídico España Cotrone",
+        text: nota.titulo + " — EC Abogados",
       });
       aviso.textContent = "";
       aviso.classList.add("oculto");
@@ -363,8 +363,6 @@ async function generarImagenNota(nota) {
   // 6. Link "Ver nota completa"
   const txtLink = "Ver nota completa:";
   const fontLink = "600 28px Inter, sans-serif";
-  const txtUrl = urlDeNota(nota);
-  const fontUrl = "400 24px Inter, sans-serif";
 
   // Estimar altura total del bloque central
   const alturaMarca = 35;
