@@ -6,7 +6,7 @@
    Ver instrucciones de cómo conseguir esa URL en el mensaje / documento entregado.
    ========================================================================== */
 
-const SHEET_CSV_URL = "PEGAR_ACA_LA_URL_CSV_PUBLICADA_DEL_GOOGLE_SHEET";
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTR0QLns8N4FURG3WuTOUfutaG0cQHbI-0YSHsFN3Ucenhle5LJg32HX9Y1ktwQ6WKtit9FmMv-2kq3/pub?output=csv";
 
 // Nombres de columnas esperados en el Sheet (no importa mayúsculas/acentos,
 // la función normalizarClave() de abajo los hace equivalentes).
