@@ -135,6 +135,25 @@ header {
   gap: 20px;
   flex-wrap: wrap;
 }
+@media (min-width: 641px) {
+  /* Grid de 3 columnas: logo | nav centrado | acciones — así el bloque
+     central queda matemáticamente centrado en el header sin importar si
+     el logo o las acciones de la derecha pesan distinto en ancho. */
+  .nav-wrap {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  .nav-wrap > .brand-mark { justify-self: start; }
+  .nav-wrap > nav.links { justify-self: center; }
+  .nav-wrap > .nav-actions { justify-self: end; }
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
 /* Botón del header hacia la subpágina de Infracciones de Tránsito */
 .btn-nav-multas {
   flex-shrink: 0;
@@ -199,13 +218,14 @@ header.nav-open .nav-toggle .bars span:nth-child(3) { top: 50%; margin-top: -0.7
   nav.links {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     gap: 0;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     background: linear-gradient(165deg, #16233f 0%, #0b1220 70%, #05070d 100%);
-    padding: 4px 24px 16px;
+    padding: 4px 24px 20px;
     box-shadow: 0 18px 32px rgba(0,0,0,0.35);
     max-height: 0;
     overflow: hidden;
@@ -218,16 +238,26 @@ header.nav-open .nav-toggle .bars span:nth-child(3) { top: 50%; margin-top: -0.7
     opacity: 1;
     pointer-events: auto;
   }
-  nav.links a {
+  .nav-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .nav-top a {
     padding: 15px 2px;
     border-top: 1px solid rgba(255,255,255,0.09);
+    border-bottom: none;
     font-size: 15px;
+    text-align: center;
   }
-  nav.links a:first-child { border-top: none; }
-  .btn-nav-multas {
-    margin: 10px 0 4px;
+  .nav-top a:first-child { border-top: none; }
+  .nav-top a.is-active { background: rgba(165,120,60,0.08); }
+  .nav-icons {
     justify-content: center;
-    display: inline-flex;
+    gap: 22px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.09);
   }
 }
 .brand-mark {
@@ -261,9 +291,47 @@ header.nav-open .nav-toggle .bars span:nth-child(3) { top: 50%; margin-top: -0.7
 }
 nav.links {
   display: flex;
-  gap: 28px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+/* Fila de arriba: Nuestro equipo · Prensa · Boletín */
+.nav-top {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.nav-top a {
   font-size: 14px;
   font-weight: 300;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+}
+.nav-top a.is-active { border-bottom-color: var(--accent); }
+/* Fila de abajo: iconos redondos — Defensas penales · Infracciones · Amparos */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.nav-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(255,255,255,0.32);
+  transition: background-color .2s ease, border-color .2s ease, transform .15s ease;
+}
+.nav-icon svg { width: 17px; height: 17px; }
+.nav-icon:hover { border-color: var(--accent); transform: translateY(-2px); }
+.nav-icon.is-active,
+.nav-icon.is-active:hover,
+header nav.links a.nav-icon.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff !important;
 }
 nav.links a {
   color: rgba(255,255,255,0.82);
