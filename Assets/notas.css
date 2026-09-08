@@ -1,0 +1,357 @@
+/* ==========================================================================
+   NOTAS.CSS — Estilos propios de la página "Notas y Artículos"
+   Reutiliza las variables de color/tipografía ya definidas en Assets/style.css
+   (--ink, --accent). Si esas variables no existen todavía en tu style.css,
+   las redeclaro acá abajo como respaldo para que la página funcione igual.
+   ========================================================================== */
+
+:root {
+  --ink: #122740;
+  --accent: #A5783C;
+  --paper: #FBF9F4;
+  --paper-line: rgba(18, 39, 64, 0.14);
+  --ink-soft: rgba(18, 39, 64, 0.68);
+}
+
+.notas-page {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ---------- Hero de la sección ---------- */
+
+.notas-hero {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 72px 24px 40px;
+  text-align: left;
+}
+
+.notas-hero__kicker {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--accent);
+  margin: 0 0 6px;
+}
+
+.notas-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.08;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+
+.notas-hero p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 56ch;
+  margin: 0;
+}
+
+/* ---------- Grilla de destacadas ---------- */
+
+.notas-destacadas {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+
+.notas-destacadas__grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .notas-destacadas__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nota-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--paper-line);
+  border-top: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 26px;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  text-align: left;
+}
+
+.nota-card:hover,
+.nota-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(18, 39, 64, 0.1);
+}
+
+.nota-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.notas-destacadas__grid .nota-card:first-child {
+  padding: 32px;
+}
+
+.notas-destacadas__grid .nota-card:first-child .nota-card__title {
+  font-size: 28px;
+}
+
+.nota-card__meta {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+}
+
+.nota-card__meta strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.nota-card__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.22;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+
+.nota-card__resumen {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.notas-destacadas__grid .nota-card:first-child .nota-card__resumen {
+  -webkit-line-clamp: 6;
+}
+
+.nota-card__link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.nota-card__link::after {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.18s ease;
+}
+
+.nota-card:hover .nota-card__link::after {
+  width: 26px;
+}
+
+/* ---------- Listado completo (estilo boletín) ---------- */
+
+.notas-listado {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 8px 24px 96px;
+  border-top: 1px solid var(--paper-line);
+}
+
+.notas-listado h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 40px 0 24px;
+  color: var(--ink);
+}
+
+.nota-fila {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--paper-line);
+  cursor: pointer;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+}
+
+.nota-fila:first-child {
+  padding-top: 4px;
+}
+
+@media (max-width: 560px) {
+  .nota-fila {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+.nota-fila__fecha {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--ink-soft);
+  line-height: 1.15;
+}
+
+.nota-fila__fecha .dia {
+  display: block;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.nota-fila__fecha .mes {
+  display: block;
+  font-size: 14px;
+}
+
+.nota-fila__titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: var(--ink);
+  transition: color 0.15s ease;
+}
+
+.nota-fila:hover .nota-fila__titulo {
+  color: var(--accent);
+}
+
+.nota-fila__autor {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+}
+
+.nota-fila__resumen {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------- Estados de carga / error / vacío ---------- */
+
+.notas-estado {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.notas-estado.oculto {
+  display: none;
+}
+
+/* ---------- Modal de nota completa ---------- */
+
+.nota-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 39, 64, 0.55);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+  overflow-y: auto;
+  z-index: 900;
+}
+
+.nota-modal[hidden] {
+  display: none;
+}
+
+.nota-modal__panel {
+  background: var(--paper);
+  max-width: 700px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 48px 40px 56px;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(18, 39, 64, 0.3);
+}
+
+@media (max-width: 560px) {
+  .nota-modal__panel {
+    padding: 36px 22px 44px;
+  }
+}
+
+.nota-modal__cerrar {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--paper-line);
+  background: #fff;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.nota-modal__meta {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+}
+
+.nota-modal__titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 24px;
+  color: var(--ink);
+  padding-right: 30px;
+}
+
+.nota-modal__cuerpo {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.nota-modal__cuerpo p {
+  margin: 0 0 18px;
+}
+
+body.nota-modal-abierto {
+  overflow: hidden;
+}
