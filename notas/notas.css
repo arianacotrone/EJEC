@@ -1,137 +1,104 @@
 /* ==========================================================================
-   NOTAS.CSS — Estilos propios de la página "Notas y Artículos"
-   Reutiliza las variables de color/tipografía ya definidas en Assets/style.css
-   (--ink, --accent). Si esas variables no existen todavía en tu style.css,
-   las redeclaro acá abajo como respaldo para que la página funcione igual.
+   NOTAS.CSS — Estilos propios de /notas/
+   No redeclara ninguna variable de :root: usa las que ya vienen de
+   Assets/style.css (--ink, --muted, --paper, --paper-soft, --accent,
+   --line, --serif, --sans, --radius-card, --radius-card-sm, --radius-pill).
+   Así no hay riesgo de pisar colores en el resto del sitio.
    ========================================================================== */
 
-:root {
-  --ink: #122740;
-  --accent: #A5783C;
-  --paper: #FBF9F4;
-  --paper-line: rgba(18, 39, 64, 0.14);
-  --ink-soft: rgba(18, 39, 64, 0.68);
-}
-
-.notas-page {
-  background: var(--paper);
+/* El sitio solo define el estilo de título de sección para h2 (h2.section-title).
+   Esta página usa un h1 real para el <title> principal (correcto para SEO/accesibilidad),
+   así que le doy el mismo tratamiento visual acá sin tocar el CSS global del sitio. */
+h1.section-title {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.2;
   color: var(--ink);
-  font-family: 'Inter', sans-serif;
+  margin-bottom: 18px;
 }
 
-/* ---------- Hero de la sección ---------- */
+/* ---------- Grilla de destacadas (mismo patrón que .press-grid) ---------- */
 
-.notas-hero {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 72px 24px 40px;
-  text-align: left;
-}
-
-.notas-hero__kicker {
-  display: inline-block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-style: italic;
-  color: var(--accent);
-  margin: 0 0 6px;
-}
-
-.notas-hero h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
-  font-size: clamp(34px, 5vw, 52px);
-  line-height: 1.08;
-  margin: 0 0 16px;
-  color: var(--ink);
-}
-
-.notas-hero p {
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--ink-soft);
-  max-width: 56ch;
-  margin: 0;
-}
-
-/* ---------- Grilla de destacadas ---------- */
-
-.notas-destacadas {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 24px 64px;
-}
-
-.notas-destacadas__grid {
+.notas-grid {
   display: grid;
-  grid-template-columns: 1.25fr 1fr 1fr;
-  gap: 28px;
-  align-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  margin-top: 36px;
+}
+
+.notas-grid.notas-grid--destacadas {
+  grid-template-columns: 1.2fr 1fr 1fr;
 }
 
 @media (max-width: 900px) {
-  .notas-destacadas__grid {
-    grid-template-columns: 1fr;
-  }
+  .notas-grid.notas-grid--destacadas { grid-template-columns: 1fr; }
 }
 
 .nota-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card-sm);
+  padding: 26px;
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border: 1px solid var(--paper-line);
-  border-top: 3px solid var(--accent);
-  border-radius: 6px;
-  padding: 26px;
-  cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  gap: 10px;
   text-align: left;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 
 .nota-card:hover,
 .nota-card:focus-visible {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 28px rgba(18, 39, 64, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(20,20,20,0.08);
+  border-color: rgba(165,120,60,0.4);
 }
 
-.nota-card:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
+.nota-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-.notas-destacadas__grid .nota-card:first-child {
+.notas-grid--destacadas .nota-card:first-child {
   padding: 32px;
 }
 
-.notas-destacadas__grid .nota-card:first-child .nota-card__title {
-  font-size: 28px;
-}
-
-.nota-card__meta {
-  font-size: 13px;
-  color: var(--ink-soft);
-  margin: 0 0 10px;
-}
-
-.nota-card__meta strong {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-.nota-card__title {
-  font-family: 'Cormorant Garamond', serif;
+.nota-card__fecha {
+  display: inline-flex;
+  align-self: flex-start;
+  font-family: var(--sans);
+  font-size: 10.5px;
   font-weight: 700;
-  font-size: 22px;
-  line-height: 1.22;
-  margin: 0 0 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
   color: var(--ink);
+  background: var(--paper-soft);
+  border-radius: var(--radius-pill);
+  padding: 5px 12px;
+}
+
+.nota-card h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 0;
+}
+
+.notas-grid--destacadas .nota-card:first-child h3 { font-size: 1.5rem; }
+
+.nota-card__autor {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--accent);
 }
 
 .nota-card__resumen {
-  font-size: 15px;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.95rem;
   line-height: 1.55;
-  color: var(--ink-soft);
-  margin: 0 0 20px;
+  color: var(--muted);
+  margin: 0;
   flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 4;
@@ -139,122 +106,76 @@
   overflow: hidden;
 }
 
-.notas-destacadas__grid .nota-card:first-child .nota-card__resumen {
-  -webkit-line-clamp: 6;
-}
-
 .nota-card__link {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
+  margin-top: 4px;
+  font-family: var(--sans);
   font-weight: 600;
-  color: var(--accent);
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.nota-card__link::after {
-  content: "";
-  width: 16px;
-  height: 1px;
-  background: var(--accent);
-  transition: width 0.18s ease;
-}
-
-.nota-card:hover .nota-card__link::after {
-  width: 26px;
-}
-
-/* ---------- Listado completo (estilo boletín) ---------- */
-
-.notas-listado {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 8px 24px 96px;
-  border-top: 1px solid var(--paper-line);
-}
-
-.notas-listado h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  font-weight: 700;
-  margin: 40px 0 24px;
+  font-size: 0.85rem;
   color: var(--ink);
 }
 
+.nota-card:hover .nota-card__link { color: var(--accent); }
+
+/* ---------- Listado completo: filas en vez de tarjetas ---------- */
+
+.notas-filas { margin-top: 8px; }
+
 .nota-fila {
   display: grid;
-  grid-template-columns: 92px 1fr;
+  grid-template-columns: 130px 1fr;
   gap: 24px;
   align-items: start;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--paper-line);
-  cursor: pointer;
+  width: 100%;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
   background: none;
   border-left: none;
   border-right: none;
   border-top: none;
   text-align: left;
-  width: 100%;
+  cursor: pointer;
   font-family: inherit;
 }
 
-.nota-fila:first-child {
-  padding-top: 4px;
-}
+.nota-fila:first-child { padding-top: 4px; }
 
 @media (max-width: 560px) {
-  .nota-fila {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
+  .nota-fila { grid-template-columns: 1fr; gap: 6px; }
 }
 
 .nota-fila__fecha {
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--ink-soft);
-  line-height: 1.15;
-}
-
-.nota-fila__fecha .dia {
-  display: block;
-  font-size: 30px;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.nota-fila__fecha .mes {
-  display: block;
-  font-size: 14px;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding-top: 4px;
 }
 
 .nota-fila__titulo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 21px;
-  font-weight: 700;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.3;
   margin: 0 0 6px;
   color: var(--ink);
-  transition: color 0.15s ease;
+  transition: color .15s ease;
 }
 
-.nota-fila:hover .nota-fila__titulo {
-  color: var(--accent);
-}
+.nota-fila:hover .nota-fila__titulo { color: var(--accent); }
 
 .nota-fila__autor {
-  font-size: 13px;
-  color: var(--ink-soft);
-  margin: 0 0 8px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin: 0 0 6px;
 }
 
 .nota-fila__resumen {
-  font-size: 15px;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.92rem;
   line-height: 1.5;
-  color: var(--ink-soft);
+  color: var(--muted);
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -265,93 +186,139 @@
 /* ---------- Estados de carga / error / vacío ---------- */
 
 .notas-estado {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 24px;
   text-align: center;
-  color: var(--ink-soft);
-  font-size: 15px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  padding: 20px 0;
 }
 
-.notas-estado.oculto {
-  display: none;
-}
+.notas-estado.oculto { display: none; }
 
 /* ---------- Modal de nota completa ---------- */
 
 .nota-modal {
   position: fixed;
   inset: 0;
-  background: rgba(18, 39, 64, 0.55);
+  background: rgba(18, 39, 64, 0.6);
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 56px 20px;
   overflow-y: auto;
   z-index: 900;
 }
 
-.nota-modal[hidden] {
-  display: none;
-}
+.nota-modal[hidden] { display: none; }
 
 .nota-modal__panel {
   background: var(--paper);
-  max-width: 700px;
+  max-width: 680px;
   width: 100%;
-  border-radius: 8px;
-  padding: 48px 40px 56px;
+  border-radius: var(--radius-card);
+  padding: 48px 44px 40px;
   position: relative;
-  box-shadow: 0 30px 60px rgba(18, 39, 64, 0.3);
+  box-shadow: 0 30px 70px rgba(18, 39, 64, 0.35);
 }
 
 @media (max-width: 560px) {
-  .nota-modal__panel {
-    padding: 36px 22px 44px;
-  }
+  .nota-modal__panel { padding: 36px 22px 30px; }
 }
 
 .nota-modal__cerrar {
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 16px;
+  right: 16px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid var(--paper-line);
-  background: #fff;
-  font-size: 18px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  font-size: 16px;
   line-height: 1;
   color: var(--ink);
   cursor: pointer;
 }
 
 .nota-modal__meta {
-  font-size: 14px;
-  color: var(--ink-soft);
-  margin: 0 0 8px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0 0 10px;
 }
 
+.nota-modal__meta strong { color: var(--accent); }
+
 .nota-modal__titulo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(26px, 4vw, 36px);
-  font-weight: 700;
-  line-height: 1.15;
-  margin: 0 0 24px;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(24px, 4vw, 32px);
+  line-height: 1.2;
+  margin: 0 0 26px;
   color: var(--ink);
   padding-right: 30px;
 }
 
 .nota-modal__cuerpo {
-  font-size: 17px;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1.02rem;
   line-height: 1.75;
+  color: var(--text);
+}
+
+.nota-modal__cuerpo p { margin: 0 0 18px; }
+
+body.nota-modal-abierto { overflow: hidden; }
+
+/* ---------- Compartir ---------- */
+
+.nota-share {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.nota-share__label {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.nota-share__botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nota-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(17,30,56,0.2);
+  background: var(--paper);
   color: var(--ink);
+  cursor: pointer;
+  transition: border-color .15s ease, transform .15s ease;
 }
 
-.nota-modal__cuerpo p {
-  margin: 0 0 18px;
+.nota-share-btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+.nota-share-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+.nota-share-btn--facebook svg { color: #1877F2; }
+.nota-share-btn--instagram svg { color: #C13584; }
+
+.nota-share__aviso {
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--muted);
 }
 
-body.nota-modal-abierto {
-  overflow: hidden;
-}
+.nota-share__aviso.oculto { display: none; }
