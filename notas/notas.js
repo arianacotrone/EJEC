@@ -308,6 +308,8 @@ async function copiarAlPortapapeles(texto) {
 
 // Dibuja una tarjeta 1080x1920 (formato historia) con el título, autor
 // y nombre del estudio, en los mismos colores navy/dorado del sitio.
+// Dibuja una tarjeta 1080x1920 (formato historia) con el contenido
+// agrupado al centro y mostrando el resumen completo + link a la nota.
 async function generarImagenNota(nota) {
   const ANCHO = 1080, ALTO = 1920;
   const canvas = document.createElement("canvas");
@@ -317,6 +319,7 @@ async function generarImagenNota(nota) {
 
   await Promise.all([
     cargarFuente("600 1px 'Cormorant Garamond'"),
+    cargarFuente("400 1px 'Inter'"),
     cargarFuente("600 1px 'Inter'"),
   ]);
 
@@ -328,33 +331,131 @@ async function generarImagenNota(nota) {
   ctx.fillStyle = "#A5783C";
   ctx.fillRect(0, 0, ANCHO, 10);
 
-  // Marca
-  ctx.fillStyle = "rgba(255,255,255,0.65)";
-  ctx.font = "600 30px Inter, sans-serif";
+  // --- PREPARACIÓN Y CÁLCULO DE ALTURAS ---
+  const paddingX = 90;
+  const anchoTexto = ANCHO - (paddingX * 2);
+
+  // 1. Marca
+  const txtMarca = "ESTUDIO JURÍDICO ESPAÑA COTRONE";
+  const fontMarca = "600 28px Inter, sans-serif";
+
+  // 2. Kicker
+  const txtKicker = "Notas y Artículos";
+  const fontKicker = "600 32px Inter, sans-serif";
+
+  // 3. Título
+  const fontTitulo = "600 68px 'Cormorant Garamond', serif";
+  const lineSpacingTitulo = 80;
+  ctx.font = fontTitulo;
+  const lineasTitulo = obtenerLineasTexto(ctx, nota.titulo || "", anchoTexto);
+
+  // 4. Autor
+  const txtAutor = "Por " + (nota.autor || "");
+  const fontAutor = "italic 36px 'Cormorant Garamond', serif";
+
+  // 5. Resumen (Hasta ~300 caracteres sin truncar drásticamente)
+  const fontResumen = "300 32px Inter, sans-serif";
+  const lineSpacingResumen = 48;
+  const textoResumen = (nota.resumen || "").slice(0, 320); // Margen holgado para 300 caracteres
+  ctx.font = fontResumen;
+  const lineasResumen = obtenerLineasTexto(ctx, textoResumen, anchoTexto);
+
+  // 6. Link "Ver nota completa"
+  const txtLink = "Ver nota completa:";
+  const fontLink = "600 28px Inter, sans-serif";
+  const txtUrl = urlDeNota(nota);
+  const fontUrl = "400 24px Inter, sans-serif";
+
+  // Estimar altura total del bloque central
+  const alturaMarca = 35;
+  const alturaKicker = 40;
+  const alturaTitulo = lineasTitulo.length * lineSpacingTitulo;
+  const alturaAutor = 45;
+  const alturaResumen = lineasResumen.length * lineSpacingResumen;
+  const alturaLink = 80;
+
+  const espacioSeparador = 30;
+
+  const alturaBloqueTotal = 
+    alturaMarca + 20 +
+    alturaKicker + 35 +
+    alturaTitulo + 25 +
+    alturaAutor + 40 +
+    alturaResumen + 45 +
+    alturaLink;
+
+  // Punto inicial en Y para centrar verticalmente en la pantalla de 1920px
+  let yActual = (ALTO - alturaBloqueTotal) / 2;
+
+  // --- RENDERIZADO DEL BLOQUE CENTRADO ---
   ctx.textAlign = "left";
-  ctx.fillText("ESTUDIO JURÍDICO ESPAÑA COTRONE", 80, 140);
 
-  // Kicker
+  // 1. Marca
+  ctx.fillStyle = "rgba(255,255,255,0.65)";
+  ctx.font = fontMarca;
+  ctx.fillText(txtMarca, paddingX, yActual);
+  yActual += alturaMarca + 20;
+
+  // 2. Kicker
   ctx.fillStyle = "#A5783C";
-  ctx.font = "600 32px Inter, sans-serif";
-  ctx.fillText("Notas y Artículos", 80, 260);
+  ctx.font = fontKicker;
+  ctx.fillText(txtKicker, paddingX, yActual);
+  yActual += alturaKicker + 35;
 
-  // Título (con salto de línea automático)
+  // 3. Título
   ctx.fillStyle = "#ffffff";
-  ctx.font = "600 76px 'Cormorant Garamond', serif";
-  dibujarTextoConSaltos(ctx, nota.titulo, 80, 400, ANCHO - 160, 88, 6);
+  ctx.font = fontTitulo;
+  for (const linea of lineasTitulo) {
+    ctx.fillText(linea, paddingX, yActual);
+    yActual += lineSpacingTitulo;
+  }
+  yActual += 25;
 
-  // Autor
+  // 4. Autor
   ctx.fillStyle = "rgba(255,255,255,0.85)";
-  ctx.font = "italic 40px 'Cormorant Garamond', serif";
-  ctx.fillText("Por " + nota.autor, 80, ALTO - 220);
+  ctx.font = fontAutor;
+  ctx.fillText(txtAutor, paddingX, yActual);
+  yActual += alturaAutor + 40;
 
-  // Resumen corto
-  ctx.fillStyle = "rgba(255,255,255,0.7)";
-  ctx.font = "300 32px Inter, sans-serif";
-  dibujarTextoConSaltos(ctx, nota.resumen, 80, ALTO - 150, ANCHO - 160, 42, 3);
+  // 5. Resumen completado
+  ctx.fillStyle = "rgba(255,255,255,0.75)";
+  ctx.font = fontResumen;
+  for (const linea of lineasResumen) {
+    ctx.fillText(linea, paddingX, yActual);
+    yActual += lineSpacingResumen;
+  }
+  yActual += 45;
+
+  // 6. Link "Ver nota completa"
+  ctx.fillStyle = "#A5783C";
+  ctx.font = fontLink;
+  ctx.fillText(txtLink, paddingX, yActual);
+  yActual += 35;
+
+  ctx.fillStyle = "rgba(255,255,255,0.85)";
+  ctx.font = fontUrl;
+  ctx.fillText(txtUrl, paddingX, yActual);
 
   return new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+}
+
+// Función auxiliar para dividir el texto en líneas respetando el ancho del canvas
+function obtenerLineasTexto(ctx, texto, anchoMax) {
+  const palabras = (texto || "").split(" ");
+  const lineas = [];
+  let lineaActual = "";
+
+  for (let i = 0; i < palabras.length; i++) {
+    const pruebaLinea = lineaActual ? lineaActual + " " + palabras[i] : palabras[i];
+    if (ctx.measureText(pruebaLinea).width > anchoMax) {
+      if (lineaActual) lineas.push(lineaActual);
+      lineaActual = palabras[i];
+    } else {
+      lineaActual = pruebaLinea;
+    }
+  }
+  if (lineaActual) lineas.push(lineaActual);
+  return lineas;
 }
 
 async function cargarFuente(especificacion) {
